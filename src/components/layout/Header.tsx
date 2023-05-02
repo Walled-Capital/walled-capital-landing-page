@@ -7,14 +7,14 @@ import {
   MenuList,
   SystemStyleObject,
 } from "@chakra-ui/react";
-import Image from "next/image";
 import { ChevronDownIcon } from "@src/assets/icons";
+import {Logo} from "@src/assets/logo";
 
 const HeaderStyles: SystemStyleObject = {
   h: "72px",
   px: "250px",
   alignItems: "center",
-  bgColor: '#F9F9F9',
+  bgColor: "#F9F9F9",
   w: "100%",
   ".logo": {
     position: "relative",
@@ -23,11 +23,11 @@ const HeaderStyles: SystemStyleObject = {
     mr: "152px",
   },
   ".menu": {
-    mr: '162px',
-    w: '100%',
-    justifyContent: 'space-between',
+    mr: "162px",
+    w: "100%",
+    justifyContent: "space-between",
     ".menuButton": {
-      bgColor: '#F9F9F9',
+      bgColor: "#F9F9F9",
       fontSize: "18px",
       fontWeight: "700",
       lineHeight: "22px",
@@ -40,7 +40,7 @@ export const Header = () => {
   return (
     <Flex sx={HeaderStyles} as="header">
       <Flex className="logo">
-        <Image src="/walledLogo.svg" alt="walledLogo" fill />
+        <Logo />
       </Flex>
       <Flex className="menu">
         <Flex>
@@ -73,7 +73,7 @@ export const Header = () => {
           </MenuList>
         </Menu>
       </Flex>
-      <Flex visibility='hidden' w='12px'/>
+      <Flex visibility="hidden" w="12px" />
     </Flex>
   );
 };
