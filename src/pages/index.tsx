@@ -1,6 +1,6 @@
-import { Flex, ListItem, OrderedList, Text, VStack } from "@chakra-ui/react";
+import {Flex, ListItem, OrderedList, Text, VStack} from "@chakra-ui/react";
 import { ProjectBoxV2 } from "@src/components/project-box-main/project-box-v2/ProjectBoxV2";
-import { ProjectBox } from "@src/components/project-box-main/project-box-v1/ProjectBox";
+import {ProjectBox} from "@src/components/project-box-main/project-box-v1/ProjectBox";
 
 export default function Home() {
   return (
@@ -124,8 +124,66 @@ export default function Home() {
             </Flex>
           )}
         />
+
+        <ProjectBoxV2
+          iconSrc="/arrowInEllipse.svg"
+          title="Security"
+          description="In the digital assets industry, security is crucial. Our tokenized crypto hedge fund emphasizes unparalleled protection for our fund members by utilizing top-ranking tools and leveraging an experienced team to minimize potential risks."
+          accordionPanelRender={() => (
+            <VStack px="30px" flexDir='column' spacing={30}>
+              <Text>
+                We select platforms and technologies with proven resilience
+                against hacks, popularity, and high security. Our expert team,
+                well-versed in the digital assets landscape, stays up-to-date with
+                best practices to maintain our platform&apos;s security, thus
+                safeguarding our fund members&apos; investments.
+              </Text>
+              <Text>
+                By continuously monitoring industry developments and adapting our
+                security measures, we provide our fund members with a secure and
+                trustworthy investment environment.
+              </Text>
+            </VStack>
+          )}
+          imagesSrc={[
+            "/Gnosis.svg",
+            "/Aragon.svg",
+            "/Miltis.svg",
+            "/Enzyme.svg",
+            "/Ledger.svg",
+          ]}
+        />
+        <ProjectBoxV2
+          iconSrc="/arrowInEllipse.svg"
+          title="Security"
+          description="In the digital assets industry, security is crucial. Our tokenized crypto hedge fund emphasizes unparalleled protection for our fund members by utilizing top-ranking tools and leveraging an experienced team to minimize potential risks."
+          accordionPanelRender={() => (
+            <VStack px="30px" flexDir='column' spacing={30}>
+              <Text>
+                We select platforms and technologies with proven resilience
+                against hacks, popularity, and high security. Our expert team,
+                well-versed in the digital assets landscape, stays up-to-date with
+                best practices to maintain our platform&apos;s security, thus
+                safeguarding our fund members&apos; investments.
+              </Text>
+              <Text>
+                By continuously monitoring industry developments and adapting our
+                security measures, we provide our fund members with a secure and
+                trustworthy investment environment.
+              </Text>
+            </VStack>
+          )}
+          imagesSrc={[
+            "/mockicon.svg",
+            "/mockicon.svg",
+            "/mockicon.svg",
+            "/mockicon.svg",
+            "/mockicon.svg",
+          ]}
+        />
       </VStack>
     </Flex>
   );
 }
+
 

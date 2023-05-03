@@ -54,7 +54,6 @@ export const projectBoxStylesV2 = (isOpen: boolean): SystemStyleObject => ({
   ".accordionItem": {
     background: "#F3F4F6",
     color: "#000000",
-    pb: "15px",
     borderRadius: "10px",
     fontSize: "17px",
     fontWeight: 500,
@@ -76,7 +75,7 @@ export const projectBoxStylesV2 = (isOpen: boolean): SystemStyleObject => ({
     ".description": {
       px: "30px",
       pt: "30px",
-      pb: '15px',
+      pb: '30px',
       flexDir: "column",
       p: { mb: isOpen ? "0px" : "30px" },
     },

@@ -20,15 +20,19 @@ interface ProjectBoxV2Props {
   title: string;
   iconSrc: string;
   description: string;
+  imagesSrc?: string[];
 }
 
 export const ProjectBoxV2: FC<ProjectBoxV2Props> = ({
   accordionPanelRender,
   iconSrc,
   title,
-  description
+  description,
+  imagesSrc,
 }) => {
   const { toggle, isOpen, accordionIndex } = useProjectBox();
+
+  const isLinkDisable = !!imagesSrc?.length;
 
   return (
     <Accordion sx={projectBoxStylesV2(isOpen)} index={accordionIndex}>
@@ -38,18 +42,47 @@ export const ProjectBoxV2: FC<ProjectBoxV2Props> = ({
           <Text>{title}</Text>
         </Flex>
         <Flex className="description">
-          <Text>
-            {description}
-          </Text>
-          <Flex justifyContent="space-between">
-            {!isOpen && <Link sx={linkButtonStyles}>enzyme PAGE</Link>}
+          <Text>{description}</Text>
+          {(isLinkDisable && !isOpen) && (
+            <Flex
+              pb="30px"
+              pt={isOpen ? "30px" : 0}
+              justifyContent="space-between"
+            >
+              {imagesSrc?.map((src, index) => (
+                <Image key={index} src={src} alt={src} />
+              ))}
+            </Flex>
+          )}
+          <Flex justifyContent={isLinkDisable ? "flex-end" : "space-between"}>
+            {!isOpen && !isLinkDisable && (
+              <Link sx={linkButtonStyles}>enzyme PAGE</Link>
+            )}
             {!isOpen && <AccordionButtonCustom onClick={toggle} />}
           </Flex>
         </Flex>
         <AccordionPanel className="accordionPanel" pb={4}>
           {accordionPanelRender()}
-          <Flex justifyContent="space-between" px="30px" pb="15px">
-            {isOpen && <Link sx={linkButtonStyles}>enzyme PAGE</Link>}
+          {(isLinkDisable && isOpen) && (
+            <Flex
+              pb="30px"
+              pt={isOpen ? "30px" : 0}
+              justifyContent="space-between"
+              px='30px'
+            >
+              {imagesSrc?.map((src, index) => (
+                <Image key={index} src={src} alt={src} />
+              ))}
+            </Flex>
+          )}
+          <Flex
+            justifyContent={isLinkDisable ? "flex-end" : "space-between"}
+            px="30px"
+            pb="30px"
+          >
+            {isOpen && !isLinkDisable && (
+              <Link sx={linkButtonStyles}>enzyme PAGE</Link>
+            )}
             {isOpen && <AccordionButtonCustom onClick={toggle} />}
           </Flex>
         </AccordionPanel>
