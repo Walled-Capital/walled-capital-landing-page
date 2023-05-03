@@ -1,6 +1,18 @@
-import {Flex, FlexProps, Heading, HStack, Image, Text, VStack} from "@chakra-ui/react";
-import {ProjectBox} from "@src/components/project-box-main/project-box-v1/ProjectBox";
-import {FC, PropsWithChildren} from "react";
+import {
+  Button,
+  Flex,
+  FlexProps,
+  Heading,
+  HStack,
+  Image,
+  ListItem,
+  OrderedList,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import { ProjectBox } from "@src/components/project-box-main/project-box-v1/ProjectBox";
+import { FC, PropsWithChildren } from "react";
+import { ProjectBoxV2 } from "@src/components/project-box-main/project-box-v2/ProjectBoxV2";
 
 const icons = [
   "/Gnosis.svg",
@@ -10,7 +22,10 @@ const icons = [
   "/Ledger.svg",
 ];
 
-const SectionLayout: FC<PropsWithChildren & FlexProps> = ({children, ...props}) => (
+const SectionLayout: FC<PropsWithChildren & FlexProps> = ({
+  children,
+  ...props
+}) => (
   <Flex {...props} w="100%" p="40px" borderRadius="20px">
     {children}
   </Flex>
@@ -45,7 +60,7 @@ export default function Home() {
               w="100%"
             >
               Walled Capital. A capital walled by chains, on-chains.
-              <br/>
+              <br />
               Unparalleled protection and growth opportunities for your digital
               wealth.
             </Text>
@@ -63,13 +78,13 @@ export default function Home() {
               </Text>
               <Flex justifyContent="space-between">
                 {icons.map((src, index) => (
-                  <Image key={index} src={src} alt={src}/>
+                  <Image key={index} src={src} alt={src} />
                 ))}
               </Flex>
             </Flex>
             <HStack w="100%" alignItems="flex-start">
               <ProjectBox
-                accordionPanelRender={({closeButton}) => (
+                accordionPanelRender={({ closeButton }) => (
                   <VStack spacing={4} align="stretch">
                     <Text
                       sx={{
@@ -147,7 +162,7 @@ export default function Home() {
                 )}
               />
               <ProjectBox
-                accordionPanelRender={({closeButton}) => (
+                accordionPanelRender={({ closeButton }) => (
                   <VStack spacing={4} align="stretch">
                     <Text
                       sx={{
@@ -228,7 +243,157 @@ export default function Home() {
           </VStack>
         </SectionLayout>
         <SectionLayout bgColor="#E5E7EB">
-          <Text>Exceptional Vision. Superior Practice.</Text>
+          <HStack spacing="40px" alignItems="flex-start">
+            <VStack
+              spacing="30px"
+              fontSize="17px"
+              fontWeight={500}
+              lineHeight="21px"
+            >
+              <Heading
+                as="h2"
+                fontSize="40px"
+                fontWeight={600}
+                lineHeight="48px"
+              >
+                Exceptional Vision. Superior Practice.
+              </Heading>
+              <Text>
+                Welcome to Walled Capital DAO, a community of forward-thinking
+                business professionals who forging a new paradigm of venture
+                communities, developing innovative investment products, and
+                assembling a wealth of expertise for the astute evaluation of
+                digital assets.
+              </Text>
+              <Text>
+                At Walled Capital, we recognise the transformative potential of
+                digital assets and are committed to staying at the forefront of
+                this exciting new era. As a member of our community, you will be
+                part of a global network of like-minded individuals who share
+                your passion for innovation and excellence.
+              </Text>
+              <Text>
+                Together, we will revolutionize the way we invest and unlock the
+                full potential of the digital assets landscape.
+              </Text>
+              <Button>contact us</Button>
+            </VStack>
+
+            <VStack minW="50%" spacing="20px">
+              <ProjectBoxV2
+                iconSrc="/arrowInEllipse.svg"
+                title="DAO Advantages"
+                description="We believe in the potential of digital assets and seeks an
+            organisational model that supports our values. A Decentralized
+            Autonomous Organization (DAO) provides the perfect framework for us,
+            and here's why:"
+                accordionPanelRender={() => (
+                  <Flex flexDir="column" px="30px" pb="30px">
+                    <OrderedList>
+                      <ListItem>
+                        <b>Decentralization & Transparency:</b> Real-time,
+                        verifiable information is available, with a focus on
+                        on-chain activities, which eliminates the need for
+                        audits and reduces operational costs.
+                      </ListItem>
+                      <ListItem>
+                        <b>Asset Control & Innovation:</b> The DAO emphasizes
+                        self-custody, allowing members to retain direct control
+                        over their assets. This model fosters innovation by
+                        utilizing smart contracts and decentralized applications
+                        (dApps) to automate processes and develop efficient
+                        investment products.
+                      </ListItem>
+                    </OrderedList>
+                  </Flex>
+                )}
+              />
+              <ProjectBoxV2
+                iconSrc="/arrowInEllipse.svg"
+                title="DAO Advantages"
+                description="We believe in the potential of digital assets and seeks an
+            organisational model that supports our values. A Decentralized
+            Autonomous Organization (DAO) provides the perfect framework for us,
+            and here's why:"
+                accordionPanelRender={() => (
+                  <Flex flexDir="column" px="30px" pb="30px">
+                    <OrderedList>
+                      <ListItem>
+                        <b>Decentralization & Transparency:</b> Real-time,
+                        verifiable information is available, with a focus on
+                        on-chain activities, which eliminates the need for
+                        audits and reduces operational costs.
+                      </ListItem>
+                      <ListItem>
+                        <b>Asset Control & Innovation:</b> The DAO emphasizes
+                        self-custody, allowing members to retain direct control
+                        over their assets. This model fosters innovation by
+                        utilizing smart contracts and decentralized applications
+                        (dApps) to automate processes and develop efficient
+                        investment products.
+                      </ListItem>
+                    </OrderedList>
+                  </Flex>
+                )}
+              />
+              <ProjectBoxV2
+                iconSrc="/arrowInEllipse.svg"
+                title="DAO Advantages"
+                description="We believe in the potential of digital assets and seeks an
+            organisational model that supports our values. A Decentralized
+            Autonomous Organization (DAO) provides the perfect framework for us,
+            and here's why:"
+                accordionPanelRender={() => (
+                  <Flex flexDir="column" px="30px" pb="30px">
+                    <OrderedList>
+                      <ListItem>
+                        <b>Decentralization & Transparency:</b> Real-time,
+                        verifiable information is available, with a focus on
+                        on-chain activities, which eliminates the need for
+                        audits and reduces operational costs.
+                      </ListItem>
+                      <ListItem>
+                        <b>Asset Control & Innovation:</b> The DAO emphasizes
+                        self-custody, allowing members to retain direct control
+                        over their assets. This model fosters innovation by
+                        utilizing smart contracts and decentralized applications
+                        (dApps) to automate processes and develop efficient
+                        investment products.
+                      </ListItem>
+                    </OrderedList>
+                  </Flex>
+                )}
+              />
+              <ProjectBoxV2
+                iconSrc="/arrowInEllipse.svg"
+                title="DAO Advantages"
+                description="We believe in the potential of digital assets and seeks an
+            organisational model that supports our values. A Decentralized
+            Autonomous Organization (DAO) provides the perfect framework for us,
+            and here's why:"
+                accordionPanelRender={() => (
+                  <Flex flexDir="column" px="30px" pb="30px">
+                    <OrderedList>
+                      <ListItem>
+                        <b>Decentralization & Transparency:</b> Real-time,
+                        verifiable information is available, with a focus on
+                        on-chain activities, which eliminates the need for
+                        audits and reduces operational costs.
+                      </ListItem>
+                      <ListItem>
+                        <b>Asset Control & Innovation:</b> The DAO emphasizes
+                        self-custody, allowing members to retain direct control
+                        over their assets. This model fosters innovation by
+                        utilizing smart contracts and decentralized applications
+                        (dApps) to automate processes and develop efficient
+                        investment products.
+                      </ListItem>
+                    </OrderedList>
+                  </Flex>
+                )}
+              />
+            </VStack>
+          </HStack>
         </SectionLayout>
         <SectionLayout bgColor="#E5E7EB">
           <Text>Updates & News</Text>

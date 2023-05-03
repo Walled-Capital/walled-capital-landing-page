@@ -61,7 +61,7 @@ export const projectBoxStylesV2 = (isOpen: boolean): SystemStyleObject => ({
       borderRadius: "10px 10px 0 0",
       padding: "12px 24px",
       alignItems: "center",
-      bgColor: "#E5E7EB",
+      bgColor: "white",
       img: {
         mr: "15px",
       },
@@ -75,13 +75,12 @@ export const projectBoxStylesV2 = (isOpen: boolean): SystemStyleObject => ({
     ".description": {
       px: "30px",
       pt: "30px",
-      pb: '30px',
+      pb: "30px",
       flexDir: "column",
       p: { mb: isOpen ? "0px" : "30px" },
     },
     ".accordionPanel": {
       p: 0,
-
     },
   },
 });
