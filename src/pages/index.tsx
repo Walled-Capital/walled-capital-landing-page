@@ -13,6 +13,7 @@ import {
 import { ProjectBox } from "@src/components/project-box-main/project-box-v1/ProjectBox";
 import { FC, PropsWithChildren } from "react";
 import { ProjectBoxV2 } from "@src/components/project-box-main/project-box-v2/ProjectBoxV2";
+import { ArticleCard } from "@src/components/article-card/ArticleCard";
 
 const icons = [
   "/Gnosis.svg",
@@ -26,7 +27,7 @@ const SectionLayout: FC<PropsWithChildren & FlexProps> = ({
   children,
   ...props
 }) => (
-  <Flex {...props} w="100%" p="40px" borderRadius="20px">
+  <Flex {...props} w="100%" p="40px" borderRadius="20px" boxSizing="border-box">
     {children}
   </Flex>
 );
@@ -36,7 +37,7 @@ export default function Home() {
     <Flex
       w="100%"
       py="35px"
-      px="215px"
+      px="245px"
       alignItems="center"
       justifyContent="center"
     >
@@ -276,7 +277,9 @@ export default function Home() {
                 Together, we will revolutionize the way we invest and unlock the
                 full potential of the digital assets landscape.
               </Text>
-              <Button>contact us</Button>
+              <Flex alignItems='flex-start' w='100%'>
+                <Button variant="black">contact us</Button>
+              </Flex>
             </VStack>
 
             <VStack minW="50%" spacing="20px">
@@ -310,93 +313,94 @@ export default function Home() {
               />
               <ProjectBoxV2
                 iconSrc="/arrowInEllipse.svg"
-                title="DAO Advantages"
-                description="We believe in the potential of digital assets and seeks an
-            organisational model that supports our values. A Decentralized
-            Autonomous Organization (DAO) provides the perfect framework for us,
-            and here's why:"
+                title="Innovative Enzyme Finance"
+                description="Enzyme Finance is transforming decentralized finance (DeFi) through its innovative approach to asset management, providing unparalleled flexibility, transparency, and security for both investors and fund managers."
                 accordionPanelRender={() => (
                   <Flex flexDir="column" px="30px" pb="30px">
-                    <OrderedList>
-                      <ListItem>
-                        <b>Decentralization & Transparency:</b> Real-time,
-                        verifiable information is available, with a focus on
-                        on-chain activities, which eliminates the need for
-                        audits and reduces operational costs.
-                      </ListItem>
-                      <ListItem>
-                        <b>Asset Control & Innovation:</b> The DAO emphasizes
-                        self-custody, allowing members to retain direct control
-                        over their assets. This model fosters innovation by
-                        utilizing smart contracts and decentralized applications
-                        (dApps) to automate processes and develop efficient
-                        investment products.
-                      </ListItem>
-                    </OrderedList>
+                    <Text mb="30px">
+                      By utilizing smart contracts and blockchain technology, the
+                      platform simplifies fund creation, management, and investment,
+                      eliminating third-party intermediaries.
+                    </Text>
+                    <Text>
+                      Enzyme Finance&lsquo;s focus on security and transparency
+                      allows investors to monitor their funds&lsquo; performance and
+                      validate fund managers&lsquo; actions in real-time through
+                      blockchain-recorded transactions.
+                    </Text>
                   </Flex>
                 )}
               />
               <ProjectBoxV2
                 iconSrc="/arrowInEllipse.svg"
-                title="DAO Advantages"
-                description="We believe in the potential of digital assets and seeks an
-            organisational model that supports our values. A Decentralized
-            Autonomous Organization (DAO) provides the perfect framework for us,
-            and here's why:"
+                title="Security"
+                description="In the digital assets industry, security is crucial. Our tokenized crypto hedge fund emphasizes unparalleled protection for our fund members by utilizing top-ranking tools and leveraging an experienced team to minimize potential risks."
                 accordionPanelRender={() => (
-                  <Flex flexDir="column" px="30px" pb="30px">
-                    <OrderedList>
-                      <ListItem>
-                        <b>Decentralization & Transparency:</b> Real-time,
-                        verifiable information is available, with a focus on
-                        on-chain activities, which eliminates the need for
-                        audits and reduces operational costs.
-                      </ListItem>
-                      <ListItem>
-                        <b>Asset Control & Innovation:</b> The DAO emphasizes
-                        self-custody, allowing members to retain direct control
-                        over their assets. This model fosters innovation by
-                        utilizing smart contracts and decentralized applications
-                        (dApps) to automate processes and develop efficient
-                        investment products.
-                      </ListItem>
-                    </OrderedList>
-                  </Flex>
+                  <VStack px="30px" flexDir="column" spacing={30}>
+                    <Text>
+                      We select platforms and technologies with proven resilience
+                      against hacks, popularity, and high security. Our expert team,
+                      well-versed in the digital assets landscape, stays up-to-date
+                      with best practices to maintain our platform&apos;s security,
+                      thus safeguarding our fund members&apos; investments.
+                    </Text>
+                    <Text>
+                      By continuously monitoring industry developments and adapting
+                      our security measures, we provide our fund members with a
+                      secure and trustworthy investment environment.
+                    </Text>
+                  </VStack>
                 )}
+                imagesSrc={[
+                  "/Gnosis.svg",
+                  "/Aragon.svg",
+                  "/Miltis.svg",
+                  "/Enzyme.svg",
+                  "/Ledger.svg",
+                ]}
               />
               <ProjectBoxV2
                 iconSrc="/arrowInEllipse.svg"
-                title="DAO Advantages"
-                description="We believe in the potential of digital assets and seeks an
-            organisational model that supports our values. A Decentralized
-            Autonomous Organization (DAO) provides the perfect framework for us,
-            and here's why:"
+                title="Security"
+                description="In the digital assets industry, security is crucial. Our tokenized crypto hedge fund emphasizes unparalleled protection for our fund members by utilizing top-ranking tools and leveraging an experienced team to minimize potential risks."
                 accordionPanelRender={() => (
-                  <Flex flexDir="column" px="30px" pb="30px">
-                    <OrderedList>
-                      <ListItem>
-                        <b>Decentralization & Transparency:</b> Real-time,
-                        verifiable information is available, with a focus on
-                        on-chain activities, which eliminates the need for
-                        audits and reduces operational costs.
-                      </ListItem>
-                      <ListItem>
-                        <b>Asset Control & Innovation:</b> The DAO emphasizes
-                        self-custody, allowing members to retain direct control
-                        over their assets. This model fosters innovation by
-                        utilizing smart contracts and decentralized applications
-                        (dApps) to automate processes and develop efficient
-                        investment products.
-                      </ListItem>
-                    </OrderedList>
-                  </Flex>
+                  <VStack px="30px" flexDir="column" spacing={30}>
+                    <Text>
+                      We select platforms and technologies with proven resilience
+                      against hacks, popularity, and high security. Our expert team,
+                      well-versed in the digital assets landscape, stays up-to-date
+                      with best practices to maintain our platform&apos;s security,
+                      thus safeguarding our fund members&apos; investments.
+                    </Text>
+                    <Text>
+                      By continuously monitoring industry developments and adapting
+                      our security measures, we provide our fund members with a
+                      secure and trustworthy investment environment.
+                    </Text>
+                  </VStack>
                 )}
+                imagesSrc={[
+                  "/mockicon.svg",
+                  "/mockicon.svg",
+                  "/mockicon.svg",
+                  "/mockicon.svg",
+                  "/mockicon.svg",
+                ]}
               />
             </VStack>
           </HStack>
         </SectionLayout>
         <SectionLayout bgColor="#E5E7EB">
-          <Text>Updates & News</Text>
+          <VStack spacing="30px" alignItems="flex-start" w="100%">
+            <Heading fontSize="40px" fontWeight={600} lineHeight="48px">
+              Updates & News
+            </Heading>
+            <Flex justifyContent="space-between" w="100%">
+              <ArticleCard imageSrs="/mockImageGreen.svg" />
+              <ArticleCard imageSrs="/mockImageRed.svg" />
+              <ArticleCard imageSrs="/mockImagePurple.svg" />
+            </Flex>
+          </VStack>
         </SectionLayout>
       </VStack>
     </Flex>

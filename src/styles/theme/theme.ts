@@ -4,6 +4,7 @@ import {
   theme as defaultTheme,
   ThemeOverride,
 } from "@chakra-ui/react";
+import { Button } from "@src/styles/theme/components/button";
 
 const themeConfig: DeepPartial<ThemeOverride> = {
   styles: {
@@ -34,6 +35,7 @@ const themeConfig: DeepPartial<ThemeOverride> = {
   },
   components: {
     ...defaultTheme.components,
+    Button,
   },
 };
 
