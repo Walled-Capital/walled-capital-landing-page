@@ -15,7 +15,7 @@ const LayoutStyles: SystemStyleObject = {
 export const Layout: FC<FlexProps> = ({ children, ...props }) => (
   <Flex sx={LayoutStyles} {...props} >
     <Header />
-    <Box as="main" flex="1 1 auto">
+    <Box as="main" flex="1 1 auto" w='100%'>
       {children}
     </Box>
     <Footer />

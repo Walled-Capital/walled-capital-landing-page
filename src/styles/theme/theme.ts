@@ -13,7 +13,7 @@ const themeConfig: DeepPartial<ThemeOverride> = {
       },
       body: {
         height: "100%",
-        bg: "white",
+        bg: "#D2D5DA",
         color: "black",
       },
       "#__next": {
