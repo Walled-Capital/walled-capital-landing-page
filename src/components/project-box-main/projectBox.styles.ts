@@ -19,24 +19,23 @@ export const projectBoxStyles: SystemStyleObject = {
     ".accordionPanel": {
       p: 0,
     },
-    ".accordionButtonWrapper": {
-      justifyContent: "flex-end",
-      ".accordionButton": {
-        bgColor: "white",
-        color: "black",
-        borderRadius: "30px",
-        w: "141px",
-        h: "25px",
-        px: "20px",
-        fontSize: "12px",
-        justifyContent: "space-between",
-        letterSpacing: "0.5px",
-        fontWeight: 600,
-        textTransform: "uppercase",
-        svg: {
-          fontSize: "25px",
-        },
-      },
-    },
   },
+};
+
+export const accordionButtonStyles: SystemStyleObject = {
+  bgColor: "white",
+  color: "black",
+  borderRadius: "30px",
+  w: "141px",
+  h: "25px",
+  px: "20px",
+  fontSize: "12px",
+  justifyContent: "space-between",
+  letterSpacing: "0.5px",
+  fontWeight: 600,
+  textTransform: "uppercase",
+  svg: {
+    fontSize: "25px",
+  },
+  _hover: {}
 };
