@@ -14,14 +14,8 @@ import { ProjectBox } from "@src/components/project-box-main/project-box-v1/Proj
 import { FC, PropsWithChildren } from "react";
 import { ProjectBoxV2 } from "@src/components/project-box-main/project-box-v2/ProjectBoxV2";
 import { ArticleCard } from "@src/components/article-card/ArticleCard";
-
-const icons = [
-  "/Gnosis.svg",
-  "/Aragon.svg",
-  "/Miltis.svg",
-  "/Enzyme.svg",
-  "/Ledger.svg",
-];
+import { icons, mockIcons } from "@src/data/mock";
+import { messages } from "@src/data/messages";
 
 const SectionLayout: FC<PropsWithChildren & FlexProps> = ({
   children,
@@ -51,7 +45,7 @@ export default function Home() {
               lineHeight="72px"
               textAlign="left"
             >
-              On-chain Private Funds
+              {messages.ON_CHAIN_PRIVATE_FUNDS}
             </Heading>
             <Text
               fontSize="17px"
@@ -60,10 +54,9 @@ export default function Home() {
               textAlign="left"
               w="100%"
             >
-              Walled Capital. A capital walled by chains, on-chains.
+              {messages.WALLED_CAPITAL_TITLE}
               <br />
-              Unparalleled protection and growth opportunities for your digital
-              wealth.
+              {messages.UNPARALLELED_PROTECTION}
             </Text>
             <Flex w="100%" flexDir="column">
               <Text
@@ -92,9 +85,7 @@ export default function Home() {
                         fontSize: "13px",
                       }}
                     >
-                      A tokenised digital assets hedge fund with additional
-                      low-risk yields from DeFis (no leverage and impermanent
-                      loss). It&apos;s based on{" "}
+                      {messages.TOKENISED_DIGITAL_ASSETS}
                       <Text as="span" fontWeight={700}>
                         enzyme.finance
                       </Text>{" "}
@@ -259,25 +250,10 @@ export default function Home() {
               >
                 Exceptional Vision. Superior Practice.
               </Heading>
-              <Text>
-                Welcome to Walled Capital DAO, a community of forward-thinking
-                business professionals who forging a new paradigm of venture
-                communities, developing innovative investment products, and
-                assembling a wealth of expertise for the astute evaluation of
-                digital assets.
-              </Text>
-              <Text>
-                At Walled Capital, we recognise the transformative potential of
-                digital assets and are committed to staying at the forefront of
-                this exciting new era. As a member of our community, you will be
-                part of a global network of like-minded individuals who share
-                your passion for innovation and excellence.
-              </Text>
-              <Text>
-                Together, we will revolutionize the way we invest and unlock the
-                full potential of the digital assets landscape.
-              </Text>
-              <Flex alignItems='flex-start' w='100%'>
+              <Text>{messages.WALLED_CAPITAL_DAO}</Text>
+              <Text>{messages.AT_WALLED_CAPITAL_WE_RECOGNISE}</Text>
+              <Text>{messages.TOGETHER_WE_WILL_REVOLUTIONIZE}</Text>
+              <Flex alignItems="flex-start" w="100%">
                 <Button variant="black">contact us</Button>
               </Flex>
             </VStack>
@@ -286,26 +262,17 @@ export default function Home() {
               <ProjectBoxV2
                 iconSrc="/arrowInEllipse.svg"
                 title="DAO Advantages"
-                description="We believe in the potential of digital assets and seeks an
-            organisational model that supports our values. A Decentralized
-            Autonomous Organization (DAO) provides the perfect framework for us,
-            and here's why:"
+                description={messages.WE_BELIEVE_IN_THE_POTENTIAL_OF}
                 accordionPanelRender={() => (
                   <Flex flexDir="column" px="30px" pb="30px">
                     <OrderedList>
                       <ListItem>
-                        <b>Decentralization & Transparency:</b> Real-time,
-                        verifiable information is available, with a focus on
-                        on-chain activities, which eliminates the need for
-                        audits and reduces operational costs.
+                        <b>Decentralization & Transparency:</b>{" "}
+                        {messages.REAL_TIME_VERIFIABLE_INFORMATION}
                       </ListItem>
                       <ListItem>
-                        <b>Asset Control & Innovation:</b> The DAO emphasizes
-                        self-custody, allowing members to retain direct control
-                        over their assets. This model fosters innovation by
-                        utilizing smart contracts and decentralized applications
-                        (dApps) to automate processes and develop efficient
-                        investment products.
+                        <b>Asset Control & Innovation:</b>{" "}
+                        {messages.THE_DAO_EMPHASIZES_SELF_CUSTODY}
                       </ListItem>
                     </OrderedList>
                   </Flex>
@@ -314,19 +281,14 @@ export default function Home() {
               <ProjectBoxV2
                 iconSrc="/arrowInEllipse.svg"
                 title="Innovative Enzyme Finance"
-                description="Enzyme Finance is transforming decentralized finance (DeFi) through its innovative approach to asset management, providing unparalleled flexibility, transparency, and security for both investors and fund managers."
+                description={messages.ENZYME_FINANCE_IS_TRANSFORMING}
                 accordionPanelRender={() => (
                   <Flex flexDir="column" px="30px" pb="30px">
                     <Text mb="30px">
-                      By utilizing smart contracts and blockchain technology, the
-                      platform simplifies fund creation, management, and investment,
-                      eliminating third-party intermediaries.
+                      {messages.BY_UTILIZING_SMART_CONTRACTS}
                     </Text>
                     <Text>
-                      Enzyme Finance&lsquo;s focus on security and transparency
-                      allows investors to monitor their funds&lsquo; performance and
-                      validate fund managers&lsquo; actions in real-time through
-                      blockchain-recorded transactions.
+                      {messages.ENZYME_FINANCES_FOCUS_ON_SECURITY}
                     </Text>
                   </Flex>
                 )}
@@ -334,58 +296,31 @@ export default function Home() {
               <ProjectBoxV2
                 iconSrc="/arrowInEllipse.svg"
                 title="Security"
-                description="In the digital assets industry, security is crucial. Our tokenized crypto hedge fund emphasizes unparalleled protection for our fund members by utilizing top-ranking tools and leveraging an experienced team to minimize potential risks."
+                description={messages.IN_THE_DIGITAL_ASSETS_INDUSTRY}
                 accordionPanelRender={() => (
                   <VStack px="30px" flexDir="column" spacing={30}>
                     <Text>
-                      We select platforms and technologies with proven resilience
-                      against hacks, popularity, and high security. Our expert team,
-                      well-versed in the digital assets landscape, stays up-to-date
-                      with best practices to maintain our platform&apos;s security,
-                      thus safeguarding our fund members&apos; investments.
+                      {messages.WE_SELECT_PLATFORMS_AND_TECHNOLOGIES}
                     </Text>
                     <Text>
-                      By continuously monitoring industry developments and adapting
-                      our security measures, we provide our fund members with a
-                      secure and trustworthy investment environment.
+                      {messages.BY_CONTINUOUSLY_MONITORING}
                     </Text>
                   </VStack>
                 )}
-                imagesSrc={[
-                  "/Gnosis.svg",
-                  "/Aragon.svg",
-                  "/Miltis.svg",
-                  "/Enzyme.svg",
-                  "/Ledger.svg",
-                ]}
+                imagesSrc={icons}
               />
               <ProjectBoxV2
                 iconSrc="/arrowInEllipse.svg"
-                title="Security"
-                description="In the digital assets industry, security is crucial. Our tokenized crypto hedge fund emphasizes unparalleled protection for our fund members by utilizing top-ranking tools and leveraging an experienced team to minimize potential risks."
+                title="Partnerships"
+                description={messages.AT_WALLED_CAPITAL_DAO}
                 accordionPanelRender={() => (
                   <VStack px="30px" flexDir="column" spacing={30}>
                     <Text>
-                      We select platforms and technologies with proven resilience
-                      against hacks, popularity, and high security. Our expert team,
-                      well-versed in the digital assets landscape, stays up-to-date
-                      with best practices to maintain our platform&apos;s security,
-                      thus safeguarding our fund members&apos; investments.
-                    </Text>
-                    <Text>
-                      By continuously monitoring industry developments and adapting
-                      our security measures, we provide our fund members with a
-                      secure and trustworthy investment environment.
+                      {messages.OUR_NETWORK_OF_PARTNERS}
                     </Text>
                   </VStack>
                 )}
-                imagesSrc={[
-                  "/mockicon.svg",
-                  "/mockicon.svg",
-                  "/mockicon.svg",
-                  "/mockicon.svg",
-                  "/mockicon.svg",
-                ]}
+                imagesSrc={mockIcons}
               />
             </VStack>
           </HStack>
