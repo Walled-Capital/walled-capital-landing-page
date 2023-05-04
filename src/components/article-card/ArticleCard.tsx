@@ -22,10 +22,10 @@ export const ArticleCard: FC<ArticleCardProps> = ({
   <Flex
     flexDir="column"
     borderRadius="20px 20px 0 0"
-    width={["218px", "295px"]}
+    width={{xl: '295px', md: '218px', sm: 'auto'}}
   >
     <Flex h={["auto", "166px"]}>
-      <Image src={imageSrs} alt={imageSrs} />
+      <Image src={imageSrs} alt={imageSrs} w='100%'/>
     </Flex>
     <Flex
       flexDir="column"

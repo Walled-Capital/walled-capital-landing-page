@@ -3,7 +3,6 @@ import {
   Flex,
   FlexProps,
   Heading,
-  HStack,
   Image,
   ListItem,
   OrderedList,
@@ -44,12 +43,12 @@ export default function Home() {
     >
       <VStack spacing={30} w="100%">
         <SectionLayout bgColor="#F3F4F6">
-          <VStack spacing="40px" w="100%">
+          <VStack spacing={{ sm: "20px", md: "40px" }} w="100%">
             <Heading
               w="100%"
-              fontSize="60px"
+              fontSize={{ md: "60px", sm: "42px" }}
               fontWeight="600"
-              lineHeight="72px"
+              lineHeight="42px"
               textAlign="left"
               letterSpacing="-1px"
             >
@@ -89,7 +88,11 @@ export default function Home() {
                 ))}
               </Flex>
             </Flex>
-            <HStack w="100%" alignItems="flex-start">
+            <Stack
+              direction={{ md: "row", sm: "column" }}
+              w="100%"
+              alignItems="flex-start"
+            >
               <ProjectBox
                 accordionPanelRender={({ closeButton }) => (
                   <VStack spacing={4} align="stretch">
@@ -121,7 +124,9 @@ export default function Home() {
                           fontSize="13px"
                         >
                           <Flex>Management / Performance fees:</Flex>
-                          <Flex fontWeight={700}>2% / 20%</Flex>
+                          <Flex fontWeight={700} textAlign="right">
+                            2% / 20%
+                          </Flex>
                         </Flex>
                         <Flex
                           w="100%"
@@ -244,10 +249,10 @@ export default function Home() {
                   </VStack>
                 )}
               />
-            </HStack>
+            </Stack>
           </VStack>
         </SectionLayout>
-        <SectionLayout bgColor="#E5E7EB">
+        <SectionLayout bgColor="#E5E7EB" flexDir="column">
           <Stack
             direction={["column", "row"]}
             spacing="40px"
@@ -261,7 +266,7 @@ export default function Home() {
             >
               <Heading
                 as="h2"
-                fontSize="40px"
+                fontSize={["48px", "40px"]}
                 fontWeight={600}
                 lineHeight="48px"
               >
@@ -270,13 +275,23 @@ export default function Home() {
               <Text>{messages.WALLED_CAPITAL_DAO}</Text>
               <Text>{messages.AT_WALLED_CAPITAL_WE_RECOGNISE}</Text>
               <Text>{messages.TOGETHER_WE_WILL_REVOLUTIONIZE}</Text>
-              <Flex alignItems="flex-start" w="100%">
+              <Flex
+                alignItems="flex-start"
+                w="100%"
+                justifyContent={{ md: "normal", sm: "center" }}
+              >
                 <Button variant="black">contact us</Button>
               </Flex>
             </VStack>
 
-            <Flex flexDir={['row', 'column']} minW="50%" h='100%' gap={["20px"]} flexWrap="wrap">
-              <Flex maxW={["48.5%", '100%']}>
+            <Flex
+              flexDir={["row", "column"]}
+              minW="50%"
+              h="100%"
+              gap={["20px"]}
+              flexWrap="wrap"
+            >
+              <Flex maxW={{ xl: "100%", md: "48.5%", sm: "88%" }}>
                 <ProjectBoxV2
                   iconSrc="/arrowInEllipse.svg"
                   title="DAO Advantages"
@@ -297,7 +312,7 @@ export default function Home() {
                   )}
                 />
               </Flex>
-              <Flex maxW={["48.5%", '100%']}>
+              <Flex maxW={{ xl: "100%", md: "48.5%", sm: "88%" }}>
                 <ProjectBoxV2
                   iconSrc="/arrowInEllipse.svg"
                   title="Innovative Enzyme Finance"
@@ -312,11 +327,13 @@ export default function Home() {
                   )}
                 />
               </Flex>
-              <Flex maxW={["48.5%", '100%']}>
+              <Flex maxW={{ xl: "100%", md: "48.5%", sm: "88%" }}>
                 <ProjectBoxV2
                   iconSrc="/arrowInEllipse.svg"
                   title="Security"
-                  description={messages.IN_THE_DIGITAL_ASSETS_INDUSTRY + '<br/><br/>'}
+                  description={
+                    messages.IN_THE_DIGITAL_ASSETS_INDUSTRY + "<br/><br/>"
+                  }
                   accordionPanelRender={() => (
                     <VStack px="30px" flexDir="column" spacing={30}>
                       <Text>
@@ -328,7 +345,7 @@ export default function Home() {
                   imagesSrc={icons}
                 />
               </Flex>
-              <Flex maxW={["48.5%", '100%']}>
+              <Flex maxW={{ xl: "100%", md: "48.5%", sm: "88%" }}>
                 <ProjectBoxV2
                   iconSrc="/arrowInEllipse.svg"
                   title="Partnerships"
@@ -345,16 +362,21 @@ export default function Home() {
           </Stack>
         </SectionLayout>
         <SectionLayout bgColor="#E5E7EB">
-          <VStack spacing="30px" alignItems="flex-start" w="100%">
+          <Stack spacing="30px" alignItems="flex-start" w="100%">
             <Heading fontSize="40px" fontWeight={600} lineHeight="48px">
               Updates & News
             </Heading>
-            <Flex justifyContent="space-between" w="100%">
+            <Flex
+              justifyContent="space-between"
+              w="100%"
+              flexDir={{ md: "row", sm: "column" }}
+              gap='10px'
+            >
               <ArticleCard imageSrs="/mockImageGreen.svg" />
               <ArticleCard imageSrs="/mockImageRed.svg" />
               <ArticleCard imageSrs="/mockImagePurple.svg" />
             </Flex>
-          </VStack>
+          </Stack>
         </SectionLayout>
       </VStack>
     </Flex>
