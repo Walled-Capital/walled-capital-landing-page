@@ -42,33 +42,36 @@ export const ProjectBoxV2: FC<ProjectBoxV2Props> = ({
           <Text>{title}</Text>
         </Flex>
         <Flex className="description">
-          <Text>{description}</Text>
-          {(isLinkDisable && !isOpen) && (
-            <Flex
-              pb="30px"
-              pt={isOpen ? "30px" : 0}
-              justifyContent="space-between"
-            >
-              {imagesSrc?.map((src, index) => (
-                <Image key={index} src={src} alt={src} />
-              ))}
-            </Flex>
-          )}
-          <Flex justifyContent={isLinkDisable ? "flex-end" : "space-between"}>
-            {!isOpen && !isLinkDisable && (
-              <Link sx={linkButtonStyles}>enzyme PAGE</Link>
+          <Text dangerouslySetInnerHTML={{__html: description}}/>
+          <Flex className='imagesBlock'>
+            {isLinkDisable && !isOpen && (
+              <Flex
+                pb="30px"
+                pt={isOpen ? "30px" : 0}
+                justifyContent="space-between"
+                w='100%'
+              >
+                {imagesSrc?.map((src, index) => (
+                  <Image key={index} src={src} alt={src} />
+                ))}
+              </Flex>
             )}
-            {!isOpen && <AccordionButtonCustom onClick={toggle} />}
+            <Flex justifyContent={isLinkDisable ? "flex-end" : "space-between"}>
+              {!isOpen && !isLinkDisable && (
+                <Link sx={linkButtonStyles}>enzyme PAGE</Link>
+              )}
+              {!isOpen && <AccordionButtonCustom onClick={toggle} />}
+            </Flex>
           </Flex>
         </Flex>
         <AccordionPanel className="accordionPanel" pb={4}>
           {accordionPanelRender()}
-          {(isLinkDisable && isOpen) && (
+          {isLinkDisable && isOpen && (
             <Flex
               pb="30px"
               pt={isOpen ? "30px" : 0}
               justifyContent="space-between"
-              px='30px'
+              px="30px"
             >
               {imagesSrc?.map((src, index) => (
                 <Image key={index} src={src} alt={src} />

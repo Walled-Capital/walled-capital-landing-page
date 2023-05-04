@@ -7,6 +7,7 @@ import {
   Image,
   ListItem,
   OrderedList,
+  Stack,
   Text,
   VStack,
 } from "@chakra-ui/react";
@@ -21,7 +22,13 @@ const SectionLayout: FC<PropsWithChildren & FlexProps> = ({
   children,
   ...props
 }) => (
-  <Flex {...props} w="100%" p="40px" borderRadius="20px" boxSizing="border-box">
+  <Flex
+    {...props}
+    w="100%"
+    p={{ xl: "40px", md: "30px", sm: "25px" }}
+    borderRadius="20px"
+    boxSizing="border-box"
+  >
     {children}
   </Flex>
 );
@@ -31,7 +38,7 @@ export default function Home() {
     <Flex
       w="100%"
       py="35px"
-      px="245px"
+      px={{ xl: "245px", md: "40px", sm: "20px" }}
       alignItems="center"
       justifyContent="center"
     >
@@ -44,6 +51,7 @@ export default function Home() {
               fontWeight="600"
               lineHeight="72px"
               textAlign="left"
+              letterSpacing="-1px"
             >
               {messages.ON_CHAIN_PRIVATE_FUNDS}
             </Heading>
@@ -71,7 +79,12 @@ export default function Home() {
                 Powered by the best:
               </Text>
               <Flex justifyContent="space-between">
-                {icons.map((src, index) => (
+                {[
+                  ...icons,
+                  "/mockicon.svg",
+                  "/mockicon.svg",
+                  "/mockicon.svg",
+                ].map((src, index) => (
                   <Image key={index} src={src} alt={src} />
                 ))}
               </Flex>
@@ -235,7 +248,11 @@ export default function Home() {
           </VStack>
         </SectionLayout>
         <SectionLayout bgColor="#E5E7EB">
-          <HStack spacing="40px" alignItems="flex-start">
+          <Stack
+            direction={["column", "row"]}
+            spacing="40px"
+            alignItems="flex-start"
+          >
             <VStack
               spacing="30px"
               fontSize="17px"
@@ -258,72 +275,74 @@ export default function Home() {
               </Flex>
             </VStack>
 
-            <VStack minW="50%" spacing="20px">
-              <ProjectBoxV2
-                iconSrc="/arrowInEllipse.svg"
-                title="DAO Advantages"
-                description={messages.WE_BELIEVE_IN_THE_POTENTIAL_OF}
-                accordionPanelRender={() => (
-                  <Flex flexDir="column" px="30px" pb="30px">
-                    <OrderedList>
-                      <ListItem>
-                        <b>Decentralization & Transparency:</b>{" "}
-                        {messages.REAL_TIME_VERIFIABLE_INFORMATION}
-                      </ListItem>
-                      <ListItem>
-                        <b>Asset Control & Innovation:</b>{" "}
-                        {messages.THE_DAO_EMPHASIZES_SELF_CUSTODY}
-                      </ListItem>
-                    </OrderedList>
-                  </Flex>
-                )}
-              />
-              <ProjectBoxV2
-                iconSrc="/arrowInEllipse.svg"
-                title="Innovative Enzyme Finance"
-                description={messages.ENZYME_FINANCE_IS_TRANSFORMING}
-                accordionPanelRender={() => (
-                  <Flex flexDir="column" px="30px" pb="30px">
-                    <Text mb="30px">
-                      {messages.BY_UTILIZING_SMART_CONTRACTS}
-                    </Text>
-                    <Text>
-                      {messages.ENZYME_FINANCES_FOCUS_ON_SECURITY}
-                    </Text>
-                  </Flex>
-                )}
-              />
-              <ProjectBoxV2
-                iconSrc="/arrowInEllipse.svg"
-                title="Security"
-                description={messages.IN_THE_DIGITAL_ASSETS_INDUSTRY}
-                accordionPanelRender={() => (
-                  <VStack px="30px" flexDir="column" spacing={30}>
-                    <Text>
-                      {messages.WE_SELECT_PLATFORMS_AND_TECHNOLOGIES}
-                    </Text>
-                    <Text>
-                      {messages.BY_CONTINUOUSLY_MONITORING}
-                    </Text>
-                  </VStack>
-                )}
-                imagesSrc={icons}
-              />
-              <ProjectBoxV2
-                iconSrc="/arrowInEllipse.svg"
-                title="Partnerships"
-                description={messages.AT_WALLED_CAPITAL_DAO}
-                accordionPanelRender={() => (
-                  <VStack px="30px" flexDir="column" spacing={30}>
-                    <Text>
-                      {messages.OUR_NETWORK_OF_PARTNERS}
-                    </Text>
-                  </VStack>
-                )}
-                imagesSrc={mockIcons}
-              />
-            </VStack>
-          </HStack>
+            <Flex flexDir={['row', 'column']} minW="50%" h='100%' gap={["20px"]} flexWrap="wrap">
+              <Flex maxW={["48.5%", '100%']}>
+                <ProjectBoxV2
+                  iconSrc="/arrowInEllipse.svg"
+                  title="DAO Advantages"
+                  description={messages.WE_BELIEVE_IN_THE_POTENTIAL_OF}
+                  accordionPanelRender={() => (
+                    <Flex flexDir="column" px="30px" pb="30px">
+                      <OrderedList>
+                        <ListItem>
+                          <b>Decentralization & Transparency:</b>{" "}
+                          {messages.REAL_TIME_VERIFIABLE_INFORMATION}
+                        </ListItem>
+                        <ListItem>
+                          <b>Asset Control & Innovation:</b>{" "}
+                          {messages.THE_DAO_EMPHASIZES_SELF_CUSTODY}
+                        </ListItem>
+                      </OrderedList>
+                    </Flex>
+                  )}
+                />
+              </Flex>
+              <Flex maxW={["48.5%", '100%']}>
+                <ProjectBoxV2
+                  iconSrc="/arrowInEllipse.svg"
+                  title="Innovative Enzyme Finance"
+                  description={messages.ENZYME_FINANCE_IS_TRANSFORMING}
+                  accordionPanelRender={() => (
+                    <Flex flexDir="column" px="30px" pb="30px">
+                      <Text mb="30px">
+                        {messages.BY_UTILIZING_SMART_CONTRACTS}
+                      </Text>
+                      <Text>{messages.ENZYME_FINANCES_FOCUS_ON_SECURITY}</Text>
+                    </Flex>
+                  )}
+                />
+              </Flex>
+              <Flex maxW={["48.5%", '100%']}>
+                <ProjectBoxV2
+                  iconSrc="/arrowInEllipse.svg"
+                  title="Security"
+                  description={messages.IN_THE_DIGITAL_ASSETS_INDUSTRY + '<br/><br/>'}
+                  accordionPanelRender={() => (
+                    <VStack px="30px" flexDir="column" spacing={30}>
+                      <Text>
+                        {messages.WE_SELECT_PLATFORMS_AND_TECHNOLOGIES}
+                      </Text>
+                      <Text>{messages.BY_CONTINUOUSLY_MONITORING}</Text>
+                    </VStack>
+                  )}
+                  imagesSrc={icons}
+                />
+              </Flex>
+              <Flex maxW={["48.5%", '100%']}>
+                <ProjectBoxV2
+                  iconSrc="/arrowInEllipse.svg"
+                  title="Partnerships"
+                  description={messages.AT_WALLED_CAPITAL_DAO}
+                  accordionPanelRender={() => (
+                    <VStack px="30px" flexDir="column" spacing={30}>
+                      <Text>{messages.OUR_NETWORK_OF_PARTNERS}</Text>
+                    </VStack>
+                  )}
+                  imagesSrc={mockIcons}
+                />
+              </Flex>
+            </Flex>
+          </Stack>
         </SectionLayout>
         <SectionLayout bgColor="#E5E7EB">
           <VStack spacing="30px" alignItems="flex-start" w="100%">
