@@ -4,11 +4,11 @@ export const accordionButtonStyles: SystemStyleObject = {
   bgColor: "white",
   color: "black",
   borderRadius: "30px",
-  w: "141px",
+  maxW: "141px",
   h: "25px",
-  px: "20px",
+  px: { md: "18px", sm: "5px" },
   fontSize: "12px",
-  justifyContent: "space-between",
+  justifyContent: "flex-end",
   letterSpacing: "0.5px",
   fontWeight: 600,
   textTransform: "uppercase",
@@ -20,6 +20,7 @@ export const accordionButtonStyles: SystemStyleObject = {
 
 export const linkButtonStyles: SystemStyleObject = {
   ...accordionButtonStyles,
+  w: "100%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",

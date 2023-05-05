@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { AccordionButtonCustom } from "@src/components/project-box-main/AccordionButtonCustom";
 import { FC } from "react";
+import {useMinWidthMedia} from "@src/hooks/useMediaWidth";
 
 interface ProjectBoxV2Props {
   accordionPanelRender: () => JSX.Element;
@@ -32,7 +33,10 @@ export const ProjectBoxV2: FC<ProjectBoxV2Props> = ({
 }) => {
   const { toggle, isOpen, accordionIndex } = useProjectBox();
 
+  const [isLargerThenMd] = useMinWidthMedia('md')
   const isLinkDisable = !!imagesSrc?.length;
+
+  const justifyContent = !isLargerThenMd ? 'center' : isLinkDisable ? "flex-end" : "space-between"
 
   return (
     <Accordion sx={projectBoxStylesV2(isOpen)} index={accordionIndex}>
@@ -42,25 +46,25 @@ export const ProjectBoxV2: FC<ProjectBoxV2Props> = ({
           <Text>{title}</Text>
         </Flex>
         <Flex className="description">
-          <Text dangerouslySetInnerHTML={{__html: description}}/>
-          <Flex className='imagesBlock'>
+          <Text dangerouslySetInnerHTML={{ __html: description }} />
+          <Flex className="imagesBlock">
             {isLinkDisable && !isOpen && (
               <Flex
                 pb="30px"
                 pt={isOpen ? "30px" : 0}
                 justifyContent="space-between"
-                w='100%'
+                w="100%"
               >
                 {imagesSrc?.map((src, index) => (
                   <Image key={index} src={src} alt={src} />
                 ))}
               </Flex>
             )}
-            <Flex justifyContent={isLinkDisable ? "flex-end" : "space-between"}>
+            <Flex justifyContent={justifyContent} gap='0 7px'>
               {!isOpen && !isLinkDisable && (
-                <Link sx={linkButtonStyles}>enzyme PAGE</Link>
+                <Flex w='50%'><Link sx={linkButtonStyles}>enzyme PAGE</Link></Flex>
               )}
-              {!isOpen && <AccordionButtonCustom onClick={toggle} />}
+              {!isOpen &&  <Flex w='50%'><AccordionButtonCustom onClick={toggle} /></Flex>}
             </Flex>
           </Flex>
         </Flex>
@@ -79,14 +83,22 @@ export const ProjectBoxV2: FC<ProjectBoxV2Props> = ({
             </Flex>
           )}
           <Flex
-            justifyContent={isLinkDisable ? "flex-end" : "space-between"}
+            justifyContent={justifyContent}
             px="30px"
             pb="30px"
+            w="100%"
+            gap='0 7px'
           >
             {isOpen && !isLinkDisable && (
-              <Link sx={linkButtonStyles}>enzyme PAGE</Link>
+              <Flex w="50%">
+                <Link sx={linkButtonStyles}>enzyme PAGE2</Link>
+              </Flex>
             )}
-            {isOpen && <AccordionButtonCustom onClick={toggle} />}
+            {isOpen && (
+              <Flex w="50%">
+                <AccordionButtonCustom onClick={toggle} />
+              </Flex>
+            )}
           </Flex>
         </AccordionPanel>
       </AccordionItem>

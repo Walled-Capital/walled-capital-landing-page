@@ -14,7 +14,7 @@ import { ProjectBox } from "@src/components/project-box-main/project-box-v1/Proj
 import { FC, PropsWithChildren } from "react";
 import { ProjectBoxV2 } from "@src/components/project-box-main/project-box-v2/ProjectBoxV2";
 import { ArticleCard } from "@src/components/article-card/ArticleCard";
-import { icons, mockIcons } from "@src/data/mock";
+import { icons, logos, mockIcons } from "@src/data/mock";
 import { messages } from "@src/data/messages";
 
 const SectionLayout: FC<PropsWithChildren & FlexProps> = ({
@@ -33,6 +33,8 @@ const SectionLayout: FC<PropsWithChildren & FlexProps> = ({
 );
 
 export default function Home() {
+
+
   return (
     <Flex
       w="100%"
@@ -77,14 +79,15 @@ export default function Home() {
               >
                 Powered by the best:
               </Text>
-              <Flex justifyContent="space-between">
-                {[
-                  ...icons,
-                  "/mockicon.svg",
-                  "/mockicon.svg",
-                  "/mockicon.svg",
-                ].map((src, index) => (
-                  <Image key={index} src={src} alt={src} />
+              <Flex
+                justifyContent="space-between"
+                alignItems="center"
+                flexWrap="wrap"
+                gap="20px"
+                h="100%"
+              >
+                {logos.map((src, index) => (
+                  <Image key={index} src={src} alt={src} maxH="29px" />
                 ))}
               </Flex>
             </Flex>
@@ -94,8 +97,8 @@ export default function Home() {
               alignItems="flex-start"
             >
               <ProjectBox
-                title='Walled Fund I'
-                description='Undervalued assets fund with low risk DeFI yields strategies'
+                title="Walled Fund I"
+                description="Undervalued assets fund with low risk DeFI yields strategies"
                 iconSrc="/arrowInEllipse.svg"
                 accordionPanelRender={({ closeButton }) => (
                   <VStack spacing={4} align="stretch">
@@ -169,14 +172,14 @@ export default function Home() {
                         </Text>
                         <Text as="i">beginning of May 2023</Text>
                       </Flex>
-                      {closeButton}
+                      <Flex w="50%">{closeButton}</Flex>
                     </Flex>
                   </VStack>
                 )}
               />
               <ProjectBox
-                title='Walled Fund Stables'
-                description='Stablecoins only fund with a low risk DeFi vields strategies'
+                title="Walled Fund Stables"
+                description="Stablecoins only fund with a low risk DeFi vields strategies"
                 background="linear-gradient(77.41deg, #6865EA 5.56%, #B1B0E1 92.56%);"
                 buttonLabel="waitlist"
                 accordionPanelRender={({ closeButton }) => (
@@ -247,7 +250,7 @@ export default function Home() {
                         </Text>
                         <Text as="i">beginning of May 2023</Text>
                       </Flex>
-                      {closeButton}
+                      <Flex w="50%">{closeButton}</Flex>
                     </Flex>
                   </VStack>
                 )}
@@ -294,7 +297,7 @@ export default function Home() {
               gap={["20px"]}
               flexWrap="wrap"
             >
-              <Flex maxW={{ xl: "100%", md: "48.5%", sm: "88%" }}>
+              <Flex maxW={{ xl: "100%", md: "48.5%", sm: "100%" }}>
                 <ProjectBoxV2
                   iconSrc="/arrowInEllipse.svg"
                   title="DAO Advantages"
@@ -315,7 +318,7 @@ export default function Home() {
                   )}
                 />
               </Flex>
-              <Flex maxW={{ xl: "100%", md: "48.5%", sm: "88%" }}>
+              <Flex maxW={{ xl: "100%", md: "48.5%", sm: "100%" }}>
                 <ProjectBoxV2
                   iconSrc="/arrowInEllipse.svg"
                   title="Innovative Enzyme Finance"
@@ -330,7 +333,7 @@ export default function Home() {
                   )}
                 />
               </Flex>
-              <Flex maxW={{ xl: "100%", md: "48.5%", sm: "88%" }}>
+              <Flex maxW={{ xl: "100%", md: "48.5%", sm: "100%" }}>
                 <ProjectBoxV2
                   iconSrc="/arrowInEllipse.svg"
                   title="Security"
@@ -348,17 +351,17 @@ export default function Home() {
                   imagesSrc={icons}
                 />
               </Flex>
-              <Flex maxW={{ xl: "100%", md: "48.5%", sm: "88%" }}>
+              <Flex maxW={{ xl: "100%", md: "48.5%", sm: "100%" }}>
                 <ProjectBoxV2
                   iconSrc="/arrowInEllipse.svg"
                   title="Partnerships"
                   description={messages.AT_WALLED_CAPITAL_DAO}
+                  imagesSrc={mockIcons}
                   accordionPanelRender={() => (
                     <VStack px="30px" flexDir="column" spacing={30}>
                       <Text>{messages.OUR_NETWORK_OF_PARTNERS}</Text>
                     </VStack>
                   )}
-                  imagesSrc={mockIcons}
                 />
               </Flex>
             </Flex>
