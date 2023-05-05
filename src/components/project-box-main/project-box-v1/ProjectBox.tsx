@@ -13,21 +13,35 @@ import { AccordionButtonCustom } from "@src/components/project-box-main/Accordio
 
 interface ProjectBoxProps {
   accordionPanelRender: (props: { closeButton: JSX.Element }) => JSX.Element;
+  buttonLabel?: string;
+  title?: string;
+  description?: string;
+  iconSrc?: string;
+  background?: string;
 }
 
-export const ProjectBox: FC<ProjectBoxProps> = ({ accordionPanelRender }) => {
+export const ProjectBox: FC<ProjectBoxProps> = ({
+  title,
+  description,
+  iconSrc,
+  background = "linear-gradient(77.53deg, #EA6A61 6.33%, #EEA19C 90.13%)",
+  buttonLabel = "Short Info",
+  accordionPanelRender,
+}) => {
   const { toggle, isOpen, accordionIndex } = useProjectBox();
 
   const closeButton = (
-    <>{isOpen && <AccordionButtonCustom onClick={toggle} />}</>
+    <>
+      {isOpen && <AccordionButtonCustom onClick={toggle} label={buttonLabel} />}
+    </>
   );
 
   return (
-    <Accordion sx={projectBoxStyles} index={accordionIndex}>
+    <Accordion sx={projectBoxStyles(background)} index={accordionIndex}>
       <AccordionItem className="accordionItem">
         <Flex className="header">
-          <Text>Walled Fund I</Text>
-          <Image src="/arrowInEllipse.svg" alt="arrowInEllipse" />
+          <Text>{title}</Text>
+          {iconSrc && <Image src={iconSrc} alt="arrowInEllipse" />}
         </Flex>
         <Flex
           sx={{
@@ -37,9 +51,9 @@ export const ProjectBox: FC<ProjectBoxProps> = ({ accordionPanelRender }) => {
             pb: "20px",
           }}
         >
-          Undervalued assets fund with low risk DeFI yields strategies
+          {description}
         </Flex>
-        {!isOpen && <AccordionButtonCustom onClick={toggle} />}
+        {!isOpen && <AccordionButtonCustom onClick={toggle} label={buttonLabel} />}
 
         <AccordionPanel className="accordionPanel" pb={4}>
           {accordionPanelRender({ closeButton })}

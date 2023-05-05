@@ -5,14 +5,16 @@ import { accordionButtonStyles } from "@src/components/project-box-main/projectB
 
 interface AccordionButtonCustom {
   onClick: () => void;
+  label: string;
 }
 
 export const AccordionButtonCustom: FC<AccordionButtonCustom> = ({
   onClick,
+  label = 'Short Info',
 }) => (
   <Flex justifyContent="flex-end">
     <AccordionButton sx={accordionButtonStyles} onClick={onClick}>
-      Short Info
+      {label}
       <AccordionIcon />
     </AccordionButton>
   </Flex>

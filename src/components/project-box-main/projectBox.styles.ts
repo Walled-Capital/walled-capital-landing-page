@@ -27,10 +27,12 @@ export const linkButtonStyles: SystemStyleObject = {
   textDecoration: "none",
 };
 
-export const projectBoxStyles: SystemStyleObject = {
+export const projectBoxStyles = (
+  background: string
+): SystemStyleObject => ({
   w: "100%",
   ".accordionItem": {
-    background: "linear-gradient(77.53deg, #EA6A61 6.33%, #EEA19C 90.13%)",
+    background,
     p: "15px",
     borderRadius: "30px",
     color: "white",
@@ -47,7 +49,7 @@ export const projectBoxStyles: SystemStyleObject = {
       p: 0,
     },
   },
-};
+});
 
 export const projectBoxStylesV2 = (isOpen: boolean): SystemStyleObject => ({
   w: "100%",
