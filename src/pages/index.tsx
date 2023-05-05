@@ -94,6 +94,9 @@ export default function Home() {
               alignItems="flex-start"
             >
               <ProjectBox
+                title='Walled Fund I'
+                description='Undervalued assets fund with low risk DeFI yields strategies'
+                iconSrc="/arrowInEllipse.svg"
                 accordionPanelRender={({ closeButton }) => (
                   <VStack spacing={4} align="stretch">
                     <Text
@@ -172,13 +175,13 @@ export default function Home() {
                 )}
               />
               <ProjectBox
+                title='Walled Fund Stables'
+                description='Stablecoins only fund with a low risk DeFi vields strategies'
+                background="linear-gradient(77.41deg, #6865EA 5.56%, #B1B0E1 92.56%);"
+                buttonLabel="waitlist"
                 accordionPanelRender={({ closeButton }) => (
                   <VStack spacing={4} align="stretch">
-                    <Text
-                      sx={{
-                        fontSize: "13px",
-                      }}
-                    >
+                    <Text fontSize="13px">
                       A tokenised digital assets hedge fund with additional
                       low-risk yields from DeFis (no leverage and impermanent
                       loss). It&apos;s based on{" "}
@@ -370,7 +373,7 @@ export default function Home() {
               justifyContent="space-between"
               w="100%"
               flexDir={{ md: "row", sm: "column" }}
-              gap='10px'
+              gap="10px"
             >
               <ArticleCard imageSrs="/mockImageGreen.svg" />
               <ArticleCard imageSrs="/mockImageRed.svg" />
