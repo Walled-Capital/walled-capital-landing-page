@@ -1,23 +1,24 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getDoc } from "@src/utils";
+import { checkReCaptcha, getDoc } from "@src/pages/api/utils";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { email } = JSON.parse(req.body);
+  const { email, gReCaptchaToken } = JSON.parse(req.body);
 
   const doc = await getDoc();
 
   try {
     if (!email) {
-      throw Error('The email field is required')
+      throw Error("The email field is required");
     }
+    await checkReCaptcha(gReCaptchaToken);
 
     let sheet = doc.sheetsByTitle["emails"];
     if (!sheet) {
       sheet = await doc.addSheet({
-        headerValues: ["email", 'date'],
+        headerValues: ["email", "date"],
         title: "emails",
       });
     }
@@ -31,7 +32,7 @@ export default async function handler(
     if (!emailIsExist) {
       await sheet.addRow({
         email: email,
-        date: new Date().toISOString()
+        date: new Date().toISOString(),
       });
     }
     res.status(200).json({ message: "A ok!" });

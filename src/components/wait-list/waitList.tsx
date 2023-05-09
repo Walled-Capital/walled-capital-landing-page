@@ -1,5 +1,6 @@
-import { FormEvent, useRef } from "react";
+import { FormEvent, useCallback, useRef } from "react";
 import { Button, Flex, FormControl, Select } from "@chakra-ui/react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import {
   inputCustom,
   InputCustom,
@@ -14,9 +15,9 @@ export const WaitList = () => {
   const inputEmailRef = useRef<HTMLInputElement>(null);
   const inputCountryRef = useRef<HTMLSelectElement>(null);
 
-  const onClickHandler = (e: FormEvent) => {
-    e.preventDefault();
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
+  const submitEnquiryForm = useCallback((gReCaptchaToken: string) => {
     const firstName = inputFirstNameRef.current?.value;
     const lastName = inputLastNameRef.current?.value;
     const email = inputEmailRef.current?.value;
@@ -29,6 +30,7 @@ export const WaitList = () => {
         lastName,
         email,
         country,
+        gReCaptchaToken
       }),
     });
 
@@ -36,7 +38,21 @@ export const WaitList = () => {
     inputLastNameRef.current!.value = "";
     inputEmailRef.current!.value = "";
     inputCountryRef.current!.value = "";
-  };
+  }, []);
+
+  const handleSumitForm = useCallback(
+    (e: FormEvent) => {
+      e.preventDefault();
+      if (!executeRecaptcha) {
+        console.log("Execute recaptcha not yet available");
+        return;
+      }
+      executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
+        submitEnquiryForm(gReCaptchaToken);
+      });
+    },
+    [executeRecaptcha]
+  );
 
   return (
     <ProjectBox
@@ -51,7 +67,7 @@ export const WaitList = () => {
             as="form"
             flexDir="column"
             gap="10px 0"
-            onSubmit={onClickHandler}
+            onSubmit={handleSumitForm}
           >
             <InputCustom
               isRequired

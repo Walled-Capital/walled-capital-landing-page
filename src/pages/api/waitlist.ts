@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getDoc } from "@src/utils";
+import {checkReCaptcha, getDoc} from "@src/pages/api/utils";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { firstName, lastName, email, country } = JSON.parse(req.body);
+  const { firstName, lastName, email, country, gReCaptchaToken } = JSON.parse(req.body);
 
   const doc = await getDoc();
 
@@ -13,6 +13,7 @@ export default async function handler(
     if (!email) {
       throw Error("The email field is required");
     }
+    await checkReCaptcha(gReCaptchaToken)
 
     let sheet = doc.sheetsByTitle["waitlist"];
     if (!sheet) {

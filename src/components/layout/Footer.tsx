@@ -9,7 +9,8 @@ import {
 } from "@chakra-ui/react";
 
 import { Logo } from "@src/assets/logo";
-import { FormEvent, useRef } from "react";
+import { FormEvent, useCallback, useRef } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const px = { xl: "250px", md: "80px" };
 
@@ -97,15 +98,30 @@ const footerStyles: SystemStyleObject = {
 
 export const Footer = () => {
   const inputEmailRef = useRef<HTMLInputElement>(null);
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
-  const onClickHandler = (e: FormEvent) => {
-    e.preventDefault();
+  const onClickHandler = (gReCaptchaToken: string) => {
     const email = inputEmailRef.current?.value;
     fetch("/api/subscribe", {
       method: "POST",
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, gReCaptchaToken }),
     });
+    inputEmailRef.current!.value = ''
   };
+
+  const handleSumitForm = useCallback(
+    (e: FormEvent) => {
+      e.preventDefault();
+      if (!executeRecaptcha) {
+        console.log("Execute recaptcha not yet available");
+        return;
+      }
+      executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
+        onClickHandler(gReCaptchaToken);
+      });
+    },
+    [executeRecaptcha]
+  );
 
   return (
     <Flex as="footer" sx={footerStyles}>
@@ -120,7 +136,7 @@ export const Footer = () => {
             <Flex
               as="form"
               flexDir={{ xl: "column", md: "row", sm: "column" }}
-              onSubmit={onClickHandler}
+              onSubmit={handleSumitForm}
             >
               <FormControl pb={["0px", "9px"]}>
                 <Input
