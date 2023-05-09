@@ -3,7 +3,7 @@ import { Logo } from "@src/assets/logo";
 
 const HeaderStyles: SystemStyleObject = {
   py: "25px",
-  px: "250px",
+  px: { xl: "250px", md: "80px", sm: '20px' },
   alignItems: "center",
   bgColor: "#E5E6E9",
   w: "100%",

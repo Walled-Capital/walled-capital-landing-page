@@ -19,9 +19,13 @@ export const ArticleCard: FC<ArticleCardProps> = ({
   type = "Blog",
   description = mockText,
 }) => (
-  <Flex flexDir="column" borderRadius="20px 20px 0 0" width="295px">
-    <Flex h="166px">
-      <Image src={imageSrs} alt={imageSrs} />
+  <Flex
+    flexDir="column"
+    borderRadius="20px 20px 0 0"
+    width={{xl: '295px', md: '218px', sm: 'auto'}}
+  >
+    <Flex h={["auto", "166px"]}>
+      <Image src={imageSrs} alt={imageSrs} w='100%'/>
     </Flex>
     <Flex
       flexDir="column"

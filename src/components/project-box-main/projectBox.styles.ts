@@ -4,11 +4,11 @@ export const accordionButtonStyles: SystemStyleObject = {
   bgColor: "white",
   color: "black",
   borderRadius: "30px",
-  w: "141px",
+  maxW: "141px",
   h: "25px",
-  px: "20px",
+  px: { md: "18px", sm: "5px" },
   fontSize: "12px",
-  justifyContent: "space-between",
+  justifyContent: "flex-end",
   letterSpacing: "0.5px",
   fontWeight: 600,
   textTransform: "uppercase",
@@ -20,6 +20,7 @@ export const accordionButtonStyles: SystemStyleObject = {
 
 export const linkButtonStyles: SystemStyleObject = {
   ...accordionButtonStyles,
+  w: "100%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -27,10 +28,12 @@ export const linkButtonStyles: SystemStyleObject = {
   textDecoration: "none",
 };
 
-export const projectBoxStyles: SystemStyleObject = {
+export const projectBoxStyles = (
+  background: string
+): SystemStyleObject => ({
   w: "100%",
   ".accordionItem": {
-    background: "linear-gradient(77.53deg, #EA6A61 6.33%, #EEA19C 90.13%)",
+    background,
     p: "15px",
     borderRadius: "30px",
     color: "white",
@@ -47,11 +50,13 @@ export const projectBoxStyles: SystemStyleObject = {
       p: 0,
     },
   },
-};
+});
 
 export const projectBoxStylesV2 = (isOpen: boolean): SystemStyleObject => ({
   w: "100%",
   ".accordionItem": {
+    display: 'flex',
+    flexDir: 'column',
     background: "#F3F4F6",
     color: "#000000",
     borderRadius: "10px",
@@ -73,11 +78,17 @@ export const projectBoxStylesV2 = (isOpen: boolean): SystemStyleObject => ({
       },
     },
     ".description": {
+      display: 'flex',
+      flex: '1',
       px: "30px",
       pt: "30px",
       pb: "30px",
       flexDir: "column",
       p: { mb: isOpen ? "0px" : "30px" },
+      '.imagesBlock': {
+        flexDir: "column",
+        justifyContent: 'flex-end'
+      }
     },
     ".accordionPanel": {
       p: 0,
