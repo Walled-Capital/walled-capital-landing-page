@@ -2,12 +2,10 @@ import {
   Button,
   Flex,
   FlexProps,
-  FormControl,
   Heading,
   Image,
   ListItem,
   OrderedList,
-  Select,
   Stack,
   Text,
   VStack,
@@ -16,12 +14,9 @@ import { ProjectBox } from "@src/components/project-box-main/project-box-v1/Proj
 import { FC, PropsWithChildren } from "react";
 import { ProjectBoxV2 } from "@src/components/project-box-main/project-box-v2/ProjectBoxV2";
 import { ArticleCard } from "@src/components/article-card/ArticleCard";
-import { countries, icons, logos, mockIcons } from "@src/data/mock";
+import { icons, logos, mockIcons } from "@src/data/mock";
 import { messages } from "@src/data/messages";
-import {
-  inputCustom,
-  InputCustom,
-} from "@src/components/input-custom/InputCustom";
+import { WaitList } from "@src/components/wait-list/waitList";
 
 const SectionLayout: FC<PropsWithChildren & FlexProps> = ({
   children,
@@ -39,7 +34,6 @@ const SectionLayout: FC<PropsWithChildren & FlexProps> = ({
 );
 
 export default function Home() {
-
 
   return (
     <Flex
@@ -183,35 +177,7 @@ export default function Home() {
                   </VStack>
                 )}
               />
-              <ProjectBox
-                title="Walled Fund Stables"
-                description="Stablecoins only fund with a low risk DeFi vields strategies"
-                background="linear-gradient(77.41deg, #6865EA 5.56%, #B1B0E1 92.56%);"
-                buttonLabel="waitlist"
-                accordionPanelRender={({ closeButton }) => (
-                  <Flex flexDir="column" gap="10px 0">
-                    <Flex fontSize="13px">Join waitlist</Flex>
-                    <Flex flexDir="column" gap="10px 0">
-                      <InputCustom placeholder="First Name*" />
-                      <InputCustom placeholder="Last Name*" />
-                      <InputCustom placeholder="Email*" />
-                      <FormControl>
-                        <Select
-                          sx={{ ...inputCustom, option: { color: "black" } }}
-                          placeholder="Country of residence*"
-                        >
-                          {countries.map((country, index) => (
-                            <option key={index} value={country}>
-                              {country}
-                            </option>
-                          ))}
-                        </Select>
-                      </FormControl>
-                    </Flex>
-                    <Flex>{closeButton}</Flex>
-                  </Flex>
-                )}
-              />
+              <WaitList />
             </Stack>
           </VStack>
         </SectionLayout>
@@ -259,8 +225,8 @@ export default function Home() {
                   iconSrc="/arrowInEllipse.svg"
                   title="DAO Advantages"
                   description={messages.WE_BELIEVE_IN_THE_POTENTIAL_OF}
-                  linkTitle='enzyme PAGE'
-                  linkSrc='https://walled.enzyme.community/vault/0xba15cec513a58e7fab7319ba42509a8e78c7d346'
+                  linkTitle="enzyme PAGE"
+                  linkSrc="https://walled.enzyme.community/vault/0xba15cec513a58e7fab7319ba42509a8e78c7d346"
                   accordionPanelRender={() => (
                     <Flex flexDir="column" px="30px" pb="30px">
                       <OrderedList>

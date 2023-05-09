@@ -9,6 +9,8 @@ import {
 } from "@chakra-ui/react";
 
 import { Logo } from "@src/assets/logo";
+import { FormEvent, useCallback, useRef } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const px = { xl: "250px", md: "80px" };
 
@@ -95,6 +97,32 @@ const footerStyles: SystemStyleObject = {
 };
 
 export const Footer = () => {
+  const inputEmailRef = useRef<HTMLInputElement>(null);
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
+  const onClickHandler = (gReCaptchaToken: string) => {
+    const email = inputEmailRef.current?.value;
+    fetch("/api/subscribe", {
+      method: "POST",
+      body: JSON.stringify({ email, gReCaptchaToken }),
+    });
+    inputEmailRef.current!.value = ''
+  };
+
+  const handleSumitForm = useCallback(
+    (e: FormEvent) => {
+      e.preventDefault();
+      if (!executeRecaptcha) {
+        console.log("Execute recaptcha not yet available");
+        return;
+      }
+      executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
+        onClickHandler(gReCaptchaToken);
+      });
+    },
+    [executeRecaptcha]
+  );
+
   return (
     <Flex as="footer" sx={footerStyles}>
       <Flex className="additional">
@@ -105,11 +133,20 @@ export const Footer = () => {
             <Text fontWeight={700}>Stay in touch with Walled news</Text>
           </Flex>
           <Flex className="input-block">
-            <Flex as="form" flexDir={{ xl: "column", md: "row", sm: "column" }}>
+            <Flex
+              as="form"
+              flexDir={{ xl: "column", md: "row", sm: "column" }}
+              onSubmit={handleSumitForm}
+            >
               <FormControl pb={["0px", "9px"]}>
-                <Input placeholder="Email" />
+                <Input
+                  isRequired
+                  type="email"
+                  ref={inputEmailRef}
+                  placeholder="Email"
+                />
               </FormControl>
-              <Button>Subscribe</Button>
+              <Button type="submit">Subscribe</Button>
             </Flex>
           </Flex>
         </Flex>

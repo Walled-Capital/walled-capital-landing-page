@@ -1,8 +1,8 @@
-import { FC } from 'react';
-import { Box, Flex, FlexProps, SystemStyleObject } from '@chakra-ui/react';
+import { FC } from "react";
+import { Box, Flex, FlexProps, SystemStyleObject } from "@chakra-ui/react";
 
-import { Header } from '@src/components/layout/Header';
-import { Footer } from '@src/components/layout/Footer';
+import { Header } from "@src/components/layout/Header";
+import { Footer } from "@src/components/layout/Footer";
 
 const LayoutStyles: SystemStyleObject = {
   flexDIr: 'column',
