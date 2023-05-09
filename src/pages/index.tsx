@@ -2,10 +2,12 @@ import {
   Button,
   Flex,
   FlexProps,
+  FormControl,
   Heading,
   Image,
   ListItem,
   OrderedList,
+  Select,
   Stack,
   Text,
   VStack,
@@ -14,8 +16,12 @@ import { ProjectBox } from "@src/components/project-box-main/project-box-v1/Proj
 import { FC, PropsWithChildren } from "react";
 import { ProjectBoxV2 } from "@src/components/project-box-main/project-box-v2/ProjectBoxV2";
 import { ArticleCard } from "@src/components/article-card/ArticleCard";
-import { icons, logos, mockIcons } from "@src/data/mock";
+import { countries, icons, logos, mockIcons } from "@src/data/mock";
 import { messages } from "@src/data/messages";
+import {
+  inputCustom,
+  InputCustom,
+} from "@src/components/input-custom/InputCustom";
 
 const SectionLayout: FC<PropsWithChildren & FlexProps> = ({
   children,
@@ -183,76 +189,27 @@ export default function Home() {
                 background="linear-gradient(77.41deg, #6865EA 5.56%, #B1B0E1 92.56%);"
                 buttonLabel="waitlist"
                 accordionPanelRender={({ closeButton }) => (
-                  <VStack spacing={4} align="stretch">
-                    <Text fontSize="13px">
-                      A tokenised digital assets hedge fund with additional
-                      low-risk yields from DeFis (no leverage and impermanent
-                      loss). It&apos;s based on{" "}
-                      <Text as="span" fontWeight={700}>
-                        enzyme.finance
-                      </Text>{" "}
-                      platform, providing real-time audible data and full
-                      control over the assets.
-                    </Text>
-                    <Flex
-                      sx={{
-                        p: "15px",
-                        border: "1px solid white",
-                        borderRadius: "20px",
-                        mb: "10px",
-                        w: "100%",
-                      }}
-                    >
-                      <VStack spacing={1} align="stretch" w="100%">
-                        <Flex
-                          w="100%"
-                          justifyContent="space-between"
-                          fontSize="13px"
+                  <Flex flexDir="column" gap="10px 0">
+                    <Flex fontSize="13px">Join waitlist</Flex>
+                    <Flex flexDir="column" gap="10px 0">
+                      <InputCustom placeholder="First Name*" />
+                      <InputCustom placeholder="Last Name*" />
+                      <InputCustom placeholder="Email*" />
+                      <FormControl>
+                        <Select
+                          sx={{ ...inputCustom, option: { color: "black" } }}
+                          placeholder="Country of residence*"
                         >
-                          <Flex>Management / Performance fees:</Flex>
-                          <Flex fontWeight={700}>2% / 20%</Flex>
-                        </Flex>
-                        <Flex
-                          w="100%"
-                          justifyContent="space-between"
-                          fontSize="13px"
-                        >
-                          <Flex>Fund life term:</Flex>
-                          <Flex fontWeight={700}>5 years</Flex>
-                        </Flex>
-                        <Flex
-                          w="100%"
-                          justifyContent="space-between"
-                          fontSize="13px"
-                        >
-                          <Flex>Soft-cap:</Flex>
-                          <Flex fontWeight={700}>$1kk</Flex>
-                        </Flex>
-                        <Flex
-                          w="100%"
-                          justifyContent="space-between"
-                          fontSize="13px"
-                        >
-                          <Flex>Hard-cap:</Flex>
-                          <Flex fontWeight={700}>$10kk</Flex>
-                        </Flex>
-                      </VStack>
+                          {countries.map((country, index) => (
+                            <option key={index} value={country}>
+                              {country}
+                            </option>
+                          ))}
+                        </Select>
+                      </FormControl>
                     </Flex>
-                    <Flex justifyContent="space-between">
-                      <Flex fontSize="12px" flexDir="column">
-                        <Text
-                          as="i"
-                          textTransform="uppercase"
-                          fontWeight={700}
-                          lineHeight="10px"
-                        >
-                          The fund launch:
-                        </Text>
-                        <Text as="i">beginning of May 2023</Text>
-                      </Flex>
-                      <Flex w="50%">{closeButton}</Flex>
-                    </Flex>
-                  </VStack>
+                    <Flex>{closeButton}</Flex>
+                  </Flex>
                 )}
               />
             </Stack>
@@ -302,6 +259,8 @@ export default function Home() {
                   iconSrc="/arrowInEllipse.svg"
                   title="DAO Advantages"
                   description={messages.WE_BELIEVE_IN_THE_POTENTIAL_OF}
+                  linkTitle='enzyme PAGE'
+                  linkSrc='https://walled.enzyme.community/vault/0xba15cec513a58e7fab7319ba42509a8e78c7d346'
                   accordionPanelRender={() => (
                     <Flex flexDir="column" px="30px" pb="30px">
                       <OrderedList>
