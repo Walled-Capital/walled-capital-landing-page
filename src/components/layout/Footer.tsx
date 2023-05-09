@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 import { Logo } from "@src/assets/logo";
-import { useRef } from "react";
+import { FormEvent, useRef } from "react";
 
 const px = { xl: "250px", md: "80px" };
 
@@ -98,7 +98,8 @@ const footerStyles: SystemStyleObject = {
 export const Footer = () => {
   const inputEmailRef = useRef<HTMLInputElement>(null);
 
-  const onClickHandler = () => {
+  const onClickHandler = (e: FormEvent) => {
+    e.preventDefault();
     const email = inputEmailRef.current?.value;
     fetch("/api/subscribe", {
       method: "POST",
@@ -116,11 +117,20 @@ export const Footer = () => {
             <Text fontWeight={700}>Stay in touch with Walled news</Text>
           </Flex>
           <Flex className="input-block">
-            <Flex as="form" flexDir={{ xl: "column", md: "row", sm: "column" }}>
+            <Flex
+              as="form"
+              flexDir={{ xl: "column", md: "row", sm: "column" }}
+              onSubmit={onClickHandler}
+            >
               <FormControl pb={["0px", "9px"]}>
-                <Input ref={inputEmailRef} placeholder="Email" />
+                <Input
+                  isRequired
+                  type="email"
+                  ref={inputEmailRef}
+                  placeholder="Email"
+                />
               </FormControl>
-              <Button onClick={onClickHandler}>Subscribe</Button>
+              <Button type="submit">Subscribe</Button>
             </Flex>
           </Flex>
         </Flex>

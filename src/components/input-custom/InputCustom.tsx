@@ -1,5 +1,4 @@
 import {
-  FormControl,
   forwardRef,
   Input,
   InputProps,
@@ -30,13 +29,10 @@ interface InputCustomProps {
 
 type props = InputCustomProps & InputProps
 
-export const InputCustom = forwardRef<
-  props,
-  "div"
->(({ placeholder = "Email" }, ref) => {
-  return (
-    <FormControl>
-      <Input ref={ref} sx={inputCustom} placeholder={placeholder} />
-    </FormControl>
-  );
-});
+export const InputCustom = forwardRef<props, "input">(
+  ({ placeholder = "Email", ...props }, ref) => {
+    return (
+      <Input {...props} ref={ref} sx={inputCustom} placeholder={placeholder} />
+    );
+  }
+);
