@@ -3,7 +3,9 @@ import { Html, Head, Main, NextScript } from 'next/document'
 export default function Document() {
   return (
     <Html lang="en">
-      <Head title='Walled Capital'/>
+      <Head >
+        <title>Walled Capital</title>
+      </Head>
       <body>
         <Main />
         <NextScript />
