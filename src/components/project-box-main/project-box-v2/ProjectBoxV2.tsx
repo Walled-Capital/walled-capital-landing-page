@@ -105,7 +105,7 @@ export const ProjectBoxV2: FC<ProjectBoxV2Props> = ({
           >
             {isOpen && !isLinkDisable && (
               <Flex w="50%">
-                <Link sx={linkButtonStyles}>enzyme PAGE2</Link>
+                <Link href={linkSrc} target='_blank' sx={linkButtonStyles}>{linkTitle}</Link>
               </Flex>
             )}
             {isOpen && (
