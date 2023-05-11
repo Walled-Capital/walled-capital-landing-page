@@ -222,7 +222,7 @@ export default function Home() {
             >
               <Flex maxW={{ xl: "100%", md: "48.5%", sm: "100%" }}>
                 <ProjectBoxV2
-                  iconSrc="/arrowInEllipse.svg"
+                  iconSrc="/DAOAdvantagesIcon.svg"
                   title="DAO Advantages"
                   description={messages.WE_BELIEVE_IN_THE_POTENTIAL_OF}
                   linkTitle="enzyme PAGE"
@@ -245,7 +245,7 @@ export default function Home() {
               </Flex>
               <Flex maxW={{ xl: "100%", md: "48.5%", sm: "100%" }}>
                 <ProjectBoxV2
-                  iconSrc="/arrowInEllipse.svg"
+                  iconSrc="/InnovativeEnzymeFinanceIcon.svg"
                   title="Innovative Enzyme Finance"
                   description={messages.ENZYME_FINANCE_IS_TRANSFORMING}
                   accordionPanelRender={() => (
@@ -260,7 +260,7 @@ export default function Home() {
               </Flex>
               <Flex maxW={{ xl: "100%", md: "48.5%", sm: "100%" }}>
                 <ProjectBoxV2
-                  iconSrc="/arrowInEllipse.svg"
+                  iconSrc="/SecurityIcon.svg"
                   title="Security"
                   description={
                     messages.IN_THE_DIGITAL_ASSETS_INDUSTRY + "<br/><br/>"
@@ -278,7 +278,7 @@ export default function Home() {
               </Flex>
               <Flex maxW={{ xl: "100%", md: "48.5%", sm: "100%" }}>
                 <ProjectBoxV2
-                  iconSrc="/arrowInEllipse.svg"
+                  iconSrc="/Partnerships.svg"
                   title="Partnerships"
                   description={messages.AT_WALLED_CAPITAL_DAO}
                   imagesSrc={mockIcons}
