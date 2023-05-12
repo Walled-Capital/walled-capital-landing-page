@@ -5,6 +5,7 @@ import {
   AccordionPanel,
   Flex,
   Image,
+  Link,
   Text,
 } from "@chakra-ui/react";
 import { projectBoxStyles } from "@src/components/project-box-main/projectBox.styles";
@@ -41,7 +42,11 @@ export const ProjectBox: FC<ProjectBoxProps> = ({
       <AccordionItem className="accordionItem">
         <Flex className="header">
           <Text>{title}</Text>
-          {iconSrc && <Image src={iconSrc} alt="arrowInEllipse" />}
+          {iconSrc && (
+            <Link href='https://walled.enzyme.community' target='_blank'>
+              <Image src={iconSrc} alt="arrowInEllipse" />
+            </Link>
+          )}
         </Flex>
         <Flex
           sx={{
@@ -53,7 +58,9 @@ export const ProjectBox: FC<ProjectBoxProps> = ({
         >
           {description}
         </Flex>
-        {!isOpen && <AccordionButtonCustom onClick={toggle} label={buttonLabel} />}
+        {!isOpen && (
+          <AccordionButtonCustom onClick={toggle} label={buttonLabel} />
+        )}
 
         <AccordionPanel className="accordionPanel" pb={4}>
           {accordionPanelRender({ closeButton })}

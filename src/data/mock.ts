@@ -20,9 +20,6 @@ export const logos = [
   "/LedgerLogo.svg",
   "/MiltisLogo.svg",
   "/OtocoLogo.svg",
-  "/mockicon.svg",
-  "/mockicon.svg",
-  "/mockicon.svg",
 ];
 
 export const countries = [

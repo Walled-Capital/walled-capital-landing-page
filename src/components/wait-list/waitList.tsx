@@ -100,11 +100,11 @@ export const WaitList = () => {
                 ))}
               </Select>
             </FormControl>
-            <Flex justifyContent="space-between">
+            <Flex justifyContent="space-between" gap='0 10px'>
               <Button sx={linkButtonStyles} variant="white" type="submit">
                 Send
               </Button>
-              <Flex>{closeButton}</Flex>
+              <Flex w='50%'>{closeButton}</Flex>
             </Flex>
           </Flex>
         </Flex>

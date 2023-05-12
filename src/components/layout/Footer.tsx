@@ -100,6 +100,8 @@ export const Footer = () => {
   const inputEmailRef = useRef<HTMLInputElement>(null);
   const { executeRecaptcha } = useGoogleReCaptcha();
 
+  const isActiveMainFooter = false
+
   const onClickHandler = (gReCaptchaToken: string) => {
     const email = inputEmailRef.current?.value;
     fetch("/api/subscribe", {
@@ -151,7 +153,7 @@ export const Footer = () => {
           </Flex>
         </Flex>
       </Flex>
-      <Flex className="main">
+      {isActiveMainFooter && <Flex className="main">
         <Flex
           w="100%"
           justifyContent="space-between"
@@ -180,7 +182,8 @@ export const Footer = () => {
           </Link>{" "}
           apply.
         </Text>
-      </Flex>
+      </Flex>}
+
     </Flex>
   );
 };
