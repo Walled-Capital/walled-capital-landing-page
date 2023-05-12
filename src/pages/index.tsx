@@ -34,6 +34,7 @@ const SectionLayout: FC<PropsWithChildren & FlexProps> = ({
 );
 
 export default function Home() {
+  const isActiveUpdatesNews = false;
 
   return (
     <Flex
@@ -225,8 +226,6 @@ export default function Home() {
                   iconSrc="/DAOAdvantagesIcon.svg"
                   title="DAO Advantages"
                   description={messages.WE_BELIEVE_IN_THE_POTENTIAL_OF}
-                  linkTitle="enzyme PAGE"
-                  linkSrc="https://walled.enzyme.community/vault/0xba15cec513a58e7fab7319ba42509a8e78c7d346"
                   accordionPanelRender={() => (
                     <Flex flexDir="column" px="30px" pb="30px">
                       <OrderedList>
@@ -247,6 +246,8 @@ export default function Home() {
                 <ProjectBoxV2
                   iconSrc="/InnovativeEnzymeFinanceIcon.svg"
                   title="Innovative Enzyme Finance"
+                  linkTitle="enzyme PAGE"
+                  linkSrc="https://walled.enzyme.community/vault/0xba15cec513a58e7fab7319ba42509a8e78c7d346"
                   description={messages.ENZYME_FINANCE_IS_TRANSFORMING}
                   accordionPanelRender={() => (
                     <Flex flexDir="column" px="30px" pb="30px">
@@ -292,23 +293,25 @@ export default function Home() {
             </Flex>
           </Stack>
         </SectionLayout>
-        <SectionLayout bgColor="#E5E7EB">
-          <Stack spacing="30px" alignItems="flex-start" w="100%">
-            <Heading fontSize="40px" fontWeight={600} lineHeight="48px">
-              Updates & News
-            </Heading>
-            <Flex
-              justifyContent="space-between"
-              w="100%"
-              flexDir={{ md: "row", sm: "column" }}
-              gap="10px"
-            >
-              <ArticleCard imageSrs="/mockImageGreen.svg" />
-              <ArticleCard imageSrs="/mockImageRed.svg" />
-              <ArticleCard imageSrs="/mockImagePurple.svg" />
-            </Flex>
-          </Stack>
-        </SectionLayout>
+        {isActiveUpdatesNews && (
+          <SectionLayout bgColor="#E5E7EB">
+            <Stack spacing="30px" alignItems="flex-start" w="100%">
+              <Heading fontSize="40px" fontWeight={600} lineHeight="48px">
+                Updates & News
+              </Heading>
+              <Flex
+                justifyContent="space-between"
+                w="100%"
+                flexDir={{ md: "row", sm: "column" }}
+                gap="10px"
+              >
+                <ArticleCard imageSrs="/mockImageGreen.svg" />
+                <ArticleCard imageSrs="/mockImageRed.svg" />
+                <ArticleCard imageSrs="/mockImagePurple.svg" />
+              </Flex>
+            </Stack>
+          </SectionLayout>
+        )}
       </VStack>
     </Flex>
   );

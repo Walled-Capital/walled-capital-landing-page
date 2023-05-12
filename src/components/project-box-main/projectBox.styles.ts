@@ -7,7 +7,7 @@ export const accordionButtonStyles: SystemStyleObject = {
   maxW: "141px",
   h: "25px",
   px: { md: "18px", sm: "5px" },
-  fontSize: "12px",
+  fontSize: "11px",
   justifyContent: "flex-end",
   letterSpacing: "0.5px",
   fontWeight: 600,
