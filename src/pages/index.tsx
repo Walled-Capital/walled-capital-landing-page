@@ -14,7 +14,7 @@ import { ProjectBox } from "@src/components/project-box-main/project-box-v1/Proj
 import { FC, PropsWithChildren } from "react";
 import { ProjectBoxV2 } from "@src/components/project-box-main/project-box-v2/ProjectBoxV2";
 import { ArticleCard } from "@src/components/article-card/ArticleCard";
-import { icons, logos, mockIcons } from "@src/data/mock";
+import { icons, logos, partnershipIcons } from "@src/data/mock";
 import { messages } from "@src/data/messages";
 import { WaitList } from "@src/components/wait-list/waitList";
 
@@ -247,7 +247,7 @@ export default function Home() {
                   iconSrc="/InnovativeEnzymeFinanceIcon.svg"
                   title="Innovative Enzyme Finance"
                   linkTitle="enzyme PAGE"
-                  linkSrc="https://walled.enzyme.community/vault/0xba15cec513a58e7fab7319ba42509a8e78c7d346"
+                  linkSrc="https://enzyme.finance/"
                   description={messages.ENZYME_FINANCE_IS_TRANSFORMING}
                   accordionPanelRender={() => (
                     <Flex flexDir="column" px="30px" pb="30px">
@@ -282,7 +282,7 @@ export default function Home() {
                   iconSrc="/Partnerships.svg"
                   title="Partnerships"
                   description={messages.AT_WALLED_CAPITAL_DAO}
-                  imagesSrc={mockIcons}
+                  imagesSrc={partnershipIcons}
                   accordionPanelRender={() => (
                     <VStack px="30px" flexDir="column" spacing={30}>
                       <Text>{messages.OUR_NETWORK_OF_PARTNERS}</Text>
