@@ -1,34 +1,43 @@
 name: MAIN
 
+
 on:
-  workflow_dispatch:
   push:
-    branches:
-      - 'main'
-      
+    branches: [main]
+  pull_request:
+    types: [closed]
+    branches: [main]
+  workflow_dispatch:
+  
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref_name }}
-  cancel-in-progress: true
-
+  cancel-in-progress: false
+  
 jobs:
-  main-and-build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: main
-          
-      - name: Build docker image
+          ref: main       
+      - name: build docker image
         run: |
-          export name=${GITHUB_REPOSITORY#*/}"-"${GITHUB_REF##*/}
-          export key="ssh-key-umbrella"
+          export name=$(echo ${GITHUB_REPOSITORY#*/}"-stage" | tr '[:upper:]' '[:lower:]')
+          export key="web-toshi-site"
           export timestamp=$(date +%s)
           export host=${{secrets.HOST}}
-          export user=${{secrets.USER}}
           docker build . -t ${name}-${timestamp}
           docker save -o ${name}-${timestamp}.tar ${name}-${timestamp}
           echo "${{secrets.SSH_PRIV}}" > ${key}
           sudo chmod 600 ${key}
           
-          scp -i ${key} -o "StrictHostKeyChecking no" ${name}-${timestamp}.tar ${user}@${host}:/home/${user}/
-          ssh -i ${key} -o "StrictHostKeyChecking no" ${user}@${host} 'sudo docker load -i '${name}'-'${timestamp}'.tar; sudo docker stop '${name}' || true; sudo docker run -d --restart always -p 11783:3000 --name '${name}'-new '${name}'-'${timestamp}'; sudo docker rm '${name}' || true; sudo docker rmi $(sudo docker images -q) || true; sudo docker rename '${name}'-new '${name}'; rm '${name}'-'${timestamp}'.tar'
+          echo "name=${name}" >> main.txt
+          echo "key1=${key}" >> main.txt
+          echo "timestamp=${timestamp}" >> main.txt
+          echo "name=${name}" >> main.txt
+          echo "key2=${key}" >> main.txt
+          echo "HOST=${host}" >> main.txt
+          scp -i ${key} -o "StrictHostKeyChecking no" stage.txt ${host}:/home/ubuntu/main.txt
+          
+          scp -i ${key} -o "StrictHostKeyChecking no" ${name}-${timestamp}.tar ${host}:${name}-${timestamp}.tar
+          ssh -i ${key} -o "StrictHostKeyChecking no" ${host} 'sudo docker load -i '${name}'-'${timestamp}'.tar; sudo docker stop '${name}' || true; sudo docker run -d  --restart always -p 3333:3000 --name '${name}'-new '${name}'-'${timestamp}'; sudo docker rm '${name}' || true; sudo docker rmi $(sudo docker images -q) || true; sudo docker rename '${name}'-new '${name}'; rm '${name}'-'${timestamp}'.tar'
