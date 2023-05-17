@@ -1,10 +1,21 @@
 export const icons = [
-  "/Gnosis.svg",
-  "/Aragon.svg",
-  "/Miltis.svg",
-  "/Enzyme.svg",
-  "/Ledger.svg",
+  {
+    iconSrc: "/Gnosis.svg",
+  },
+  {
+    iconSrc: "/Aragon.svg",
+  },
+  {
+    iconSrc: "/Miltis.svg",
+  },
+  {
+    iconSrc: "/Enzyme.svg",
+  },
+  {
+    iconSrc: "/Ledger.svg",
+  },
 ];
+
 
 export const mockIcons = [
   "/mockicon.svg",
@@ -12,6 +23,12 @@ export const mockIcons = [
   "/mockicon.svg",
   "/mockicon.svg",
   "/mockicon.svg",
+];
+export const partnershipIcons = [
+  {
+    iconSrc: "/abexProLogo.svg",
+    link: "https://abex.pro/",
+  },
 ];
 
 export const logos = [

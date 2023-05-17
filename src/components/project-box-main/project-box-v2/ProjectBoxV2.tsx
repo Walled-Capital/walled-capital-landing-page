@@ -21,7 +21,7 @@ interface ProjectBoxV2Props {
   title: string;
   iconSrc: string;
   description: string;
-  imagesSrc?: string[];
+  imagesSrc?: { iconSrc: string; link?: string }[];
   linkTitle?: string;
   linkSrc?: string;
 }
@@ -63,15 +63,25 @@ export const ProjectBoxV2: FC<ProjectBoxV2Props> = ({
                 justifyContent="space-between"
                 w="100%"
               >
-                {imagesSrc?.map((src, index) => (
-                  <Image key={index} src={src} alt={src} />
+                {imagesSrc?.map(({ link, iconSrc }, index) => (
+                  <Link
+                    key={index}
+                    maxW="30%"
+                    cursor={link ? "pointer" : "auto"}
+                    href={link}
+                    target='_blank'
+                  >
+                    <Image src={iconSrc} alt={iconSrc} />
+                  </Link>
                 ))}
               </Flex>
             )}
             <Flex justifyContent={justifyContent} gap="0 7px">
               {!isOpen && !isLinkDisable && (
                 <Flex w="50%">
-                  <Link href={linkSrc} target='_blank' sx={linkButtonStyles}>{linkTitle}</Link>
+                  <Link href={linkSrc} target="_blank" sx={linkButtonStyles}>
+                    {linkTitle}
+                  </Link>
                 </Flex>
               )}
               {!isOpen && (
@@ -91,8 +101,16 @@ export const ProjectBoxV2: FC<ProjectBoxV2Props> = ({
               justifyContent="space-between"
               px="30px"
             >
-              {imagesSrc?.map((src, index) => (
-                <Image key={index} src={src} alt={src} />
+              {imagesSrc?.map(({ iconSrc, link }, index) => (
+                <Link
+                  key={index}
+                  maxW="30%"
+                  cursor={link ? "pointer" : "auto"}
+                  href={link}
+                  target='_blank'
+                >
+                  <Image src={iconSrc} alt={iconSrc} />
+                </Link>
               ))}
             </Flex>
           )}
@@ -105,7 +123,9 @@ export const ProjectBoxV2: FC<ProjectBoxV2Props> = ({
           >
             {isOpen && !isLinkDisable && (
               <Flex w="50%">
-                <Link href={linkSrc} target='_blank' sx={linkButtonStyles}>{linkTitle}</Link>
+                <Link href={linkSrc} target="_blank" sx={linkButtonStyles}>
+                  {linkTitle}
+                </Link>
               </Flex>
             )}
             {isOpen && (
