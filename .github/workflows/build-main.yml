@@ -1,0 +1,34 @@
+name: MAIN
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+      
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  main-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+          
+      - name: Build docker image
+        run: |
+          export name=${GITHUB_REPOSITORY#*/}"-"${GITHUB_REF##*/}
+          export key="ssh-key-umbrella"
+          export timestamp=$(date +%s)
+          export host=${{secrets.HOST}}
+          export user=${{secrets.USER}}
+          docker build . -t ${name}-${timestamp}
+          docker save -o ${name}-${timestamp}.tar ${name}-${timestamp}
+          echo "${{secrets.SSH_PRIV}}" > ${key}
+          sudo chmod 600 ${key}
+          
+          scp -i ${key} -o "StrictHostKeyChecking no" ${name}-${timestamp}.tar ${user}@${host}:/home/${user}/
+          ssh -i ${key} -o "StrictHostKeyChecking no" ${user}@${host} 'sudo docker load -i '${name}'-'${timestamp}'.tar; sudo docker stop '${name}' || true; sudo docker run -d --restart always -p 11783:3000 --name '${name}'-new '${name}'-'${timestamp}'; sudo docker rm '${name}' || true; sudo docker rmi $(sudo docker images -q) || true; sudo docker rename '${name}'-new '${name}'; rm '${name}'-'${timestamp}'.tar'
