@@ -210,7 +210,9 @@ export default function Home() {
                 w="100%"
                 justifyContent={{ md: "normal", sm: "center" }}
               >
-                <Button variant="black">contact us</Button>
+                <Button variant="black">
+                  <a href='mailto:account@walled.capital'>contact us</a>
+                </Button>
               </Flex>
             </VStack>
 
