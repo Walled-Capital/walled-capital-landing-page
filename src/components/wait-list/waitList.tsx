@@ -30,7 +30,7 @@ export const WaitList = () => {
         lastName,
         email,
         country,
-        gReCaptchaToken
+        gReCaptchaToken,
       }),
     });
 
@@ -100,11 +100,17 @@ export const WaitList = () => {
                 ))}
               </Select>
             </FormControl>
-            <Flex justifyContent="space-between" gap='0 10px'>
-              <Button sx={linkButtonStyles} variant="white" type="submit">
-                Send
-              </Button>
-              <Flex w='50%'>{closeButton}</Flex>
+            <Flex
+              justifyContent="space-between"
+              gap="10px"
+              flexDir={{ md: "row", sm: "column" }}
+            >
+              <Flex justifyContent={{md: 'flex-start', sm: 'center'}} w='100%'>
+                <Button sx={linkButtonStyles} variant="white" type="submit">
+                  Send
+                </Button>
+              </Flex>
+              <Flex w={{ md: "50%", sm: "100%" }}>{closeButton}</Flex>
             </Flex>
           </Flex>
         </Flex>

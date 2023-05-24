@@ -12,7 +12,7 @@ export const AccordionButtonCustom: FC<AccordionButtonCustom> = ({
   onClick,
   label = "Short Info",
 }) => (
-  <Flex justifyContent="flex-end" w='100%'>
+  <Flex justifyContent={{md: 'flex-end', sm: 'center'}} w='100%'>
     <AccordionButton sx={accordionButtonStyles} onClick={onClick}>
       <Flex w="100%" justifyContent="center">
         {label}
