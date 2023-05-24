@@ -69,7 +69,7 @@ export const ProjectBoxV2: FC<ProjectBoxV2Props> = ({
                     maxW="30%"
                     cursor={link ? "pointer" : "auto"}
                     href={link}
-                    target='_blank'
+                    target="_blank"
                   >
                     <Image src={iconSrc} alt={iconSrc} />
                   </Link>
@@ -78,14 +78,14 @@ export const ProjectBoxV2: FC<ProjectBoxV2Props> = ({
             )}
             <Flex justifyContent={justifyContent} gap="0 7px">
               {!isOpen && !isLinkDisable && (
-                <Flex w="50%">
+                <Flex w={{ md: "50%", sm: "100%" }}>
                   <Link href={linkSrc} target="_blank" sx={linkButtonStyles}>
                     {linkTitle}
                   </Link>
                 </Flex>
               )}
               {!isOpen && (
-                <Flex w="50%">
+                <Flex w={{ md: "50%", sm: "100%" }}>
                   <AccordionButtonCustom onClick={toggle} />
                 </Flex>
               )}
@@ -107,7 +107,7 @@ export const ProjectBoxV2: FC<ProjectBoxV2Props> = ({
                   maxW="30%"
                   cursor={link ? "pointer" : "auto"}
                   href={link}
-                  target='_blank'
+                  target="_blank"
                 >
                   <Image src={iconSrc} alt={iconSrc} />
                 </Link>
@@ -119,17 +119,18 @@ export const ProjectBoxV2: FC<ProjectBoxV2Props> = ({
             px="30px"
             pb="30px"
             w="100%"
-            gap="0 7px"
+            gap="7px"
+            flexDir={{ md: "row", sm: "column" }}
           >
             {isOpen && !isLinkDisable && (
-              <Flex w="50%">
+              <Flex w={{ md: "50%", sm: "100%" }} justifyContent={{md: 'flex-start', sm: 'center'}}>
                 <Link href={linkSrc} target="_blank" sx={linkButtonStyles}>
                   {linkTitle}
                 </Link>
               </Flex>
             )}
             {isOpen && (
-              <Flex w="50%">
+              <Flex w={{ md: "50%", sm: "100%" }}>
                 <AccordionButtonCustom onClick={toggle} />
               </Flex>
             )}

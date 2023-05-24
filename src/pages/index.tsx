@@ -161,7 +161,7 @@ export default function Home() {
                         </Flex>
                       </VStack>
                     </Flex>
-                    <Flex justifyContent="space-between">
+                    <Flex justifyContent="space-between" flexDir={{md: 'row', sm: 'column'}} gap='10px'>
                       <Flex fontSize="12px" flexDir="column">
                         <Text
                           as="i"
@@ -173,7 +173,7 @@ export default function Home() {
                         </Text>
                         <Text as="i">beginning of May 2023</Text>
                       </Flex>
-                      <Flex w="50%">{closeButton}</Flex>
+                      <Flex w={{md: "50%", sm: '100%'}}>{closeButton}</Flex>
                     </Flex>
                   </VStack>
                 )}

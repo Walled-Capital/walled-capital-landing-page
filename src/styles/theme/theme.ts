@@ -26,7 +26,7 @@ const themeConfig: DeepPartial<ThemeOverride> = {
     }),
   },
   breakpoints: {
-    sm: "375px",
+    sm: "320px",
     md: "835px",
     xl: "1440px",
   },
